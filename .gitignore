@@ -1,0 +1,16 @@
+deps
+secrets
+*.log
+*.db
+.HA_VERSION
+.uuid
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

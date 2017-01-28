@@ -1,0 +1,431 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !env_var HOME_LAT
+  longitude: !env_varH HOME_LON
+  # C for Celcius, F for Fahrenheit
+  #temperature_unit: F
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Los_Angeles
+  elevation: 86
+
+####################################################
+################    Customize       ################
+####################################################
+
+
+# scenes:
+#     scene.movie_play:
+#       icon: mdi:filmstrip
+#     scene.movie_pause:
+#       icon: mdi:filmstrip-off
+#       hidden: true
+#     scene.full:
+#       icon: mdi:emoticon-cool
+#     scene.day:
+#       icon: mdi:calendar-today
+#     scene.early_evening:
+#       icon: mdi:brightness-3
+#     scene.late_evening:
+#       icon: mdi:martini
+#     scene.night:
+#       icon: mdi:weather-night
+
+
+http:
+  api_password: !env_var API_PASSWORD
+
+# View all events in a logbook
+logbook:
+
+# Enables support for tracking state changes over time.
+history:
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Checks for available updates
+updater:
+
+# Track the sun
+sun:
+
+# Discover some devices automatically
+discovery:
+
+# Enables the frontend
+frontend:
+
+# Allows you to issue voice commands from the frontend
+conversation:
+
+
+
+
+####################################################
+################    lights      #####################
+####################################################
+
+
+
+####################################################
+################    Connected  #####################
+####################################################
+ifttt:
+  key: !env_var IFTT_KEY
+
+wink:
+  email: !env_var WINK_EMAIL
+  password: !env_var WINK_PASSWORD
+  client_id: !env_var WINK_CLIENT_ID
+  client_secret: !env_var WINK_CLIENT_SECRET
+
+wemo:
+
+####################################################
+################     Tracking  #####################
+####################################################
+
+# device_tracker:
+#   platform: nmap_tracker
+#   hosts: 192.168.1.1/24
+#   home_interval: 10
+
+####################################################
+################    Automation #####################
+####################################################
+
+# automation:
+#   - alias: 'Lights on before sunrise'
+#     trigger:
+#       platform: sun
+#       event: sunrise
+#       offset: "-00:45:00"
+#     action:
+#       service: scene.turn_on
+#       entity_id: scene.day
+
+
+##### Weekdays #######################################
+automation:
+- alias: 'Lights on in the Morning'
+  trigger:
+    - platform: time
+      hours: 6
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.morning
+
+- alias: 'Lights off for during the weekdays'
+  trigger:
+    - platform: time
+      hours: 9
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.away
+
+- alias: 'Welcome Home Lighting'
+  trigger:
+    - platform: time
+      hours: 16
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.early_evening
+
+- alias: 'Late Evening'
+  trigger:
+    - platform: time
+      hours: 20
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.late_evening
+
+- alias: 'Night Lighting'
+  trigger:
+    - platform: time
+      hours: 22
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.night
+
+
+#### EveryDay ######################################
+
+##### Weekdays #######################################
+- alias: 'Fans on at Night'
+  trigger:
+    - platform: time
+      hours: 22
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+  action:
+    service: switch.turn_on
+    entity_id: switch.fans
+
+- alias: 'Fans on in the Morning'
+  trigger:
+    - platform: time
+      hours: 6
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+  action:
+    service: switch.turn_off
+    entity_id: switch.fans
+
+####################################################
+############     Internet Buttons     ##############
+####################################################
+
+
+
+####################################################
+################     Scenes    #####################
+####################################################
+
+scene:
+
+  - name: Morning
+    entities:
+      light.dining_room:
+        state: on
+        brightness: 40
+      light.black_lamp_1:
+        state: on
+        brightness: 256
+      light.black_lamp_2:
+        state: on
+        brightness: 256
+      light.white_lamp:
+        state: on
+        brightness: 256
+      light.orange_lamp:
+        state: on
+        brightness: 256
+
+
+  - name: Movie Play
+    entities:
+      light.dining_room:
+        state: off
+      light.black_lamp_1:
+        state: on
+        brightness: 10
+      light.black_lamp_2:
+        state: off
+      light.white_lamp:
+        state: on
+        brightness: 10
+    light.orange_lamp:
+        state: off
+
+  - name: Movie Pause
+    entities:
+      light.dining_room:
+        state: on
+        brightness: 100
+      light.black_lamp_1:
+        state: on
+        brightness: 100
+      light.black_lamp_2:
+        state: on
+        brightness: 100
+      light.white_lamp:
+        state: on
+        brightness: 100
+      light.orange_lamp:
+        state: on
+        brightness: 100
+
+  - name: Full
+    entities:
+      light.dining_room:
+        state: on
+        brightness: 256
+      light.black_lamp_1:
+        state: on
+        brightness: 256
+      light.black_lamp_2:
+        state: on
+        brightness: 256
+      light.white_lamp:
+        state: on
+        brightness: 256
+      light.orange_lamp:
+        state: on
+        brightness: 256
+
+
+  - name: Away
+    entities:
+      light.dining_room:
+        state: off
+      light.black_lamp_1:
+        state: off
+      light.black_lamp_2:
+        state: off
+      light.white_lamp:
+        state: on
+        brightness: 255
+
+
+  - name: Early Evening
+    entities:
+      light.dining_room:
+        state: on
+        brightness: 256
+      light.black_lamp_1:
+        state: on
+        brightness: 150
+      light.black_lamp_2:
+        state: on
+        brightness: 150
+      light.white_lamp:
+        state: on
+        brightness: 200
+      light.orange_lamp:
+        state: on
+        brightness: 200
+
+
+  - name: Late Evening
+    entities:
+      light.dining_room:
+        state: off
+      light.black_lamp_1:
+        state: on
+        brightness: 100
+      light.black_lamp_2:
+        state: on
+        brightness: 100
+      light.white_lamp:
+        state: on
+        brightness: 150
+      light.orange_lamp:
+        state: on
+        brightness: 100
+
+
+  - name: Night
+    entities:
+      light.dining_room:
+        state: off
+      light.black_lamp_1:
+        state: off
+      light.black_lamp_2:
+        state: off
+      light.white_lamp:
+        state: on
+        brightness: 50
+      light.orange_lamp:
+        state: on
+        brightness: 25
+
+
+
+
+
+  ####################################################
+  ################     Groups    #####################
+  ####################################################
+
+# lights:
+#   - light.black_lamp_1
+#   - light.black_lamp_2
+#   - light.dining_room
+#   - light.white_lamp
+
+  ####################################################
+  ################     Sensors   #####################
+  ####################################################
+sensor:
+  # Tracking entity to entity
+  - platform: google_travel_time
+    name: Home to Work
+    api_key: !env_var GOOGLE_TRAVEL_API_KEY
+    origin: !env_var GOOGLE_TRAVEL_ADDRESS_HOME
+    destination: !env_var GOOGLE_TRAVEL_ADDRESS_WORK
+
+  - platform: google_travel_time
+    name: Work to Home
+    api_key: !env_var GOOGLE_TRAVEL_API_KEY
+    origin: !env_var GOOGLE_TRAVEL_ADDRESS_WORK
+    destination: !env_var GOOGLE_TRAVEL_ADDRESS_HOME
+
+
+  ####################################################
+  ################     Scripts    ####################
+  ####################################################
+
+script:
