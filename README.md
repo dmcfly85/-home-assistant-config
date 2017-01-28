@@ -1,3 +1,3 @@
 # -home-assistant-config
 
-Config for my home assistant
+Config for my home assistant!
