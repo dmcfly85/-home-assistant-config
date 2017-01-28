@@ -3,7 +3,7 @@ homeassistant:
   name: Home
   # Location required to calculate the time the sun rises and sets
   latitude: !env_var HOME_LAT
-  longitude: !env_varH HOME_LON
+  longitude: !env_var HOME_LON
   # C for Celcius, F for Fahrenheit
   #temperature_unit: F
   unit_system: imperial
