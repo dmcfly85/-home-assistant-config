@@ -2,4 +2,4 @@
 
 Config for my home assistant!
 
-Testing GIT SERVER 2
+Testing GIT SERVER 3
