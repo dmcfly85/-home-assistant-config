@@ -78,7 +78,7 @@ wemo:
 #       entity_id: scene.day
 
 
-scene: !include_dir_merge_list automation
+automation: !include_dir_merge_list automation
 scene: !include_dir_merge_list scenes
 sensor: !include_dir_merge_list sensors
 
