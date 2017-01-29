@@ -1,0 +1,39 @@
+- alias: 'Fans on at Night'
+  trigger:
+    - platform: time
+      hours: 22
+      minutes: 45
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+  action:
+    service: switch.turn_on
+    entity_id: switch.fans
+
+- alias: 'Fans on in the Morning'
+  trigger:
+    - platform: time
+      hours: 6
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+  action:
+    service: switch.turn_off
+    entity_id: switch.fans

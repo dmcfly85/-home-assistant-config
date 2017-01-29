@@ -1,0 +1,90 @@
+automation:
+- alias: 'Lights on in the Morning'
+  trigger:
+    - platform: time
+      hours: 6
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.morning
+
+- alias: 'Lights off during the weekdays'
+  trigger:
+    - platform: time
+      hours: 9
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.away
+
+- alias: 'Welcome Home Lighting'
+  trigger:
+    - platform: time
+      hours: 16
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.early_evening
+
+- alias: 'Late Evening'
+  trigger:
+    - platform: time
+      hours: 20
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.late_evening
+
+- alias: 'Night Lighting'
+  trigger:
+    - platform: time
+      hours: 22
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.night

@@ -11,28 +11,6 @@ homeassistant:
   time_zone: America/Los_Angeles
   elevation: 86
 
-####################################################
-################    Customize       ################
-####################################################
-
-
-# scenes:
-#     scene.movie_play:
-#       icon: mdi:filmstrip
-#     scene.movie_pause:
-#       icon: mdi:filmstrip-off
-#       hidden: true
-#     scene.full:
-#       icon: mdi:emoticon-cool
-#     scene.day:
-#       icon: mdi:calendar-today
-#     scene.early_evening:
-#       icon: mdi:brightness-3
-#     scene.late_evening:
-#       icon: mdi:martini
-#     scene.night:
-#       icon: mdi:weather-night
-
 
 http:
   api_password: !env_var API_PASSWORD
@@ -60,14 +38,6 @@ frontend:
 
 # Allows you to issue voice commands from the frontend
 conversation:
-
-
-
-
-####################################################
-################    lights      #####################
-####################################################
-
 
 
 ####################################################
@@ -108,143 +78,7 @@ wemo:
 #       entity_id: scene.day
 
 
-##### Weekdays #######################################
-automation:
-- alias: 'Lights on in the Morning'
-  trigger:
-    - platform: time
-      hours: 6
-      minutes: 30
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    service: scene.turn_on
-    entity_id: scene.morning
-
-- alias: 'Lights off for during the weekdays'
-  trigger:
-    - platform: time
-      hours: 9
-      minutes: 00
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    service: scene.turn_on
-    entity_id: scene.away
-
-- alias: 'Welcome Home Lighting'
-  trigger:
-    - platform: time
-      hours: 16
-      minutes: 30
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    service: scene.turn_on
-    entity_id: scene.early_evening
-
-- alias: 'Late Evening'
-  trigger:
-    - platform: time
-      hours: 20
-      minutes: 30
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    service: scene.turn_on
-    entity_id: scene.late_evening
-
-- alias: 'Night Lighting'
-  trigger:
-    - platform: time
-      hours: 22
-      minutes: 00
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    service: scene.turn_on
-    entity_id: scene.night
-
-
-#### EveryDay ######################################
-
-##### Weekdays #######################################
-- alias: 'Fans on at Night'
-  trigger:
-    - platform: time
-      hours: 22
-      minutes: 00
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
-  action:
-    service: switch.turn_on
-    entity_id: switch.fans
-
-- alias: 'Fans on in the Morning'
-  trigger:
-    - platform: time
-      hours: 6
-      minutes: 00
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
-  action:
-    service: switch.turn_off
-    entity_id: switch.fans
-
-
+scene: !include_dir_merge_list automation
 scene: !include_dir_merge_list scenes
 sensor: !include_dir_merge_list sensors
 
