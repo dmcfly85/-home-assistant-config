@@ -1,0 +1,17 @@
+  - name: Early Evening
+    entities:
+      light.dining_room:
+        state: on
+        brightness: 256
+      light.black_lamp_1:
+        state: on
+        brightness: 150
+      light.black_lamp_2:
+        state: on
+        brightness: 150
+      light.white_lamp:
+        state: on
+        brightness: 200
+      light.orange_lamp:
+        state: on
+        brightness: 200

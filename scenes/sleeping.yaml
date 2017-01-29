@@ -1,0 +1,14 @@
+  - name: Night
+    entities:
+      light.dining_room:
+        state: off
+      light.black_lamp_1:
+        state: off
+      light.black_lamp_2:
+        state: off
+      light.white_lamp:
+        state: on
+        brightness: 50
+      light.orange_lamp:
+        state: on
+        brightness: 25

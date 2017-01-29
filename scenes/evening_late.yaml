@@ -1,0 +1,16 @@
+  - name: Late Evening
+    entities:
+      light.dining_room:
+        state: off
+      light.black_lamp_1:
+        state: on
+        brightness: 100
+      light.black_lamp_2:
+        state: on
+        brightness: 100
+      light.white_lamp:
+        state: on
+        brightness: 150
+      light.orange_lamp:
+        state: on
+        brightness: 100
