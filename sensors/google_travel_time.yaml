@@ -1,10 +1,11 @@
-- platform: google_travel_time
+  # Tracking entity to entity
+  - platform: google_travel_time
     name: Home to Work
     api_key: !env_var GOOGLE_TRAVEL_API_KEY
     origin: !env_var GOOGLE_TRAVEL_ADDRESS_HOME
     destination: !env_var GOOGLE_TRAVEL_ADDRESS_WORK
 
-- platform: google_travel_time
+  - platform: google_travel_time
     name: Work to Home
     api_key: !env_var GOOGLE_TRAVEL_API_KEY
     origin: !env_var GOOGLE_TRAVEL_ADDRESS_WORK
