@@ -254,179 +254,116 @@ automation:
 ################     Scenes    #####################
 ####################################################
 
-scene:
-
-  - name: Morning
-    entities:
-      light.dining_room:
-        state: on
-        brightness: 40
-      light.black_lamp_1:
-        state: on
-        brightness: 256
-      light.black_lamp_2:
-        state: on
-        brightness: 256
-      light.white_lamp:
-        state: on
-        brightness: 256
-      light.orange_lamp:
-        state: on
-        brightness: 256
-
-
-  - name: Movie Play
-    entities:
-      light.dining_room:
-        state: off
-      light.black_lamp_1:
-        state: on
-        brightness: 10
-      light.black_lamp_2:
-        state: off
-      light.white_lamp:
-        state: on
-        brightness: 10
-    light.orange_lamp:
-        state: off
-
-  - name: Movie Pause
-    entities:
-      light.dining_room:
-        state: on
-        brightness: 100
-      light.black_lamp_1:
-        state: on
-        brightness: 100
-      light.black_lamp_2:
-        state: on
-        brightness: 100
-      light.white_lamp:
-        state: on
-        brightness: 100
-      light.orange_lamp:
-        state: on
-        brightness: 100
-
-  - name: Full
-    entities:
-      light.dining_room:
-        state: on
-        brightness: 256
-      light.black_lamp_1:
-        state: on
-        brightness: 256
-      light.black_lamp_2:
-        state: on
-        brightness: 256
-      light.white_lamp:
-        state: on
-        brightness: 256
-      light.orange_lamp:
-        state: on
-        brightness: 256
-
-
-  - name: Away
-    entities:
-      light.dining_room:
-        state: off
-      light.black_lamp_1:
-        state: off
-      light.black_lamp_2:
-        state: off
-      light.white_lamp:
-        state: on
-        brightness: 255
-
-
-  - name: Early Evening
-    entities:
-      light.dining_room:
-        state: on
-        brightness: 256
-      light.black_lamp_1:
-        state: on
-        brightness: 150
-      light.black_lamp_2:
-        state: on
-        brightness: 150
-      light.white_lamp:
-        state: on
-        brightness: 200
-      light.orange_lamp:
-        state: on
-        brightness: 200
-
-
-  - name: Late Evening
-    entities:
-      light.dining_room:
-        state: off
-      light.black_lamp_1:
-        state: on
-        brightness: 100
-      light.black_lamp_2:
-        state: on
-        brightness: 100
-      light.white_lamp:
-        state: on
-        brightness: 150
-      light.orange_lamp:
-        state: on
-        brightness: 100
-
-
-  - name: Night
-    entities:
-      light.dining_room:
-        state: off
-      light.black_lamp_1:
-        state: off
-      light.black_lamp_2:
-        state: off
-      light.white_lamp:
-        state: on
-        brightness: 50
-      light.orange_lamp:
-        state: on
-        brightness: 25
+scene: !include_dir_merge_list scenes
 
 
 
 
 
-  ####################################################
-  ################     Groups    #####################
-  ####################################################
 
-# lights:
-#   - light.black_lamp_1
-#   - light.black_lamp_2
-#   - light.dining_room
-#   - light.white_lamp
+  # - name: Movie Pause
+  #   entities:
+  #     light.dining_room:
+  #       state: on
+  #       brightness: 100
+  #     light.black_lamp_1:
+  #       state: on
+  #       brightness: 100
+  #     light.black_lamp_2:
+  #       state: on
+  #       brightness: 100
+  #     light.white_lamp:
+  #       state: on
+  #       brightness: 100
+  #     light.orange_lamp:
+  #       state: on
+  #       brightness: 100
 
-  ####################################################
-  ################     Sensors   #####################
-  ####################################################
+  # - name: Full
+  #   entities:
+  #     light.dining_room:
+  #       state: on
+  #       brightness: 256
+  #     light.black_lamp_1:
+  #       state: on
+  #       brightness: 256
+  #     light.black_lamp_2:
+  #       state: on
+  #       brightness: 256
+  #     light.white_lamp:
+  #       state: on
+  #       brightness: 256
+  #     light.orange_lamp:
+  #       state: on
+  #       brightness: 256
+
+
+  # - name: Away
+  #   entities:
+  #     light.dining_room:
+  #       state: off
+  #     light.black_lamp_1:
+  #       state: off
+  #     light.black_lamp_2:
+  #       state: off
+  #     light.white_lamp:
+  #       state: on
+  #       brightness: 255
+
+
+  # - name: Early Evening
+  #   entities:
+  #     light.dining_room:
+  #       state: on
+  #       brightness: 256
+  #     light.black_lamp_1:
+  #       state: on
+  #       brightness: 150
+  #     light.black_lamp_2:
+  #       state: on
+  #       brightness: 150
+  #     light.white_lamp:
+  #       state: on
+  #       brightness: 200
+  #     light.orange_lamp:
+  #       state: on
+  #       brightness: 200
+
+
+  # - name: Late Evening
+  #   entities:
+  #     light.dining_room:
+  #       state: off
+  #     light.black_lamp_1:
+  #       state: on
+  #       brightness: 100
+  #     light.black_lamp_2:
+  #       state: on
+  #       brightness: 100
+  #     light.white_lamp:
+  #       state: on
+  #       brightness: 150
+  #     light.orange_lamp:
+  #       state: on
+  #       brightness: 100
+
+
+  # - name: Night
+  #   entities:
+  #     light.dining_room:
+  #       state: off
+  #     light.black_lamp_1:
+  #       state: off
+  #     light.black_lamp_2:
+  #       state: off
+  #     light.white_lamp:
+  #       state: on
+  #       brightness: 50
+  #     light.orange_lamp:
+  #       state: on
+  #       brightness: 25
+
+
 sensor: !include_dir_merge_list sensors
 
-  # Tracking entity to entity
-  # - platform: google_travel_time
-  #   name: Home to Work
-  #   api_key: !env_var GOOGLE_TRAVEL_API_KEY
-  #   origin: !env_var GOOGLE_TRAVEL_ADDRESS_HOME
-  #   destination: !env_var GOOGLE_TRAVEL_ADDRESS_WORK
 
-  # - platform: google_travel_time
-  #   name: Work to Home
-  #   api_key: !env_var GOOGLE_TRAVEL_API_KEY
-  #   origin: !env_var GOOGLE_TRAVEL_ADDRESS_WORK
-  #   destination: !env_var GOOGLE_TRAVEL_ADDRESS_HOME
-
-
-  ####################################################
-  ################     Scripts    ####################
-  ####################################################
-
-script:

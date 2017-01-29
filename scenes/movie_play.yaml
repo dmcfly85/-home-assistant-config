@@ -1,0 +1,14 @@
+- name: Movie Play
+  entities:
+    light.dining_room:
+      state: off
+    light.black_lamp_1:
+      state: on
+      brightness: 10
+    light.black_lamp_2:
+      state: off
+    light.white_lamp:
+      state: on
+      brightness: 10
+    light.orange_lamp:
+      state: off
