@@ -1,4 +1,3 @@
-automation:
 - alias: 'Lights on in the Morning'
   trigger:
     - platform: time
