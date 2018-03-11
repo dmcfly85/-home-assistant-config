@@ -1,5 +1,5 @@
 deps
-secrets
+.ha-secrets
 *.log
 *.db
 .HA_VERSION

@@ -2,84 +2,76 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: !env_var HOME_LAT
-  longitude: !env_var HOME_LON
-  # C for Celcius, F for Fahrenheit
-  #temperature_unit: F
+  latitude: 47.6355
+  longitude: -122.3235
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 32
+  # metric for Metric, imperial for Imperial
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Los_Angeles
-  elevation: 86
-
-
-http:
-  api_password: !env_var API_PASSWORD
-
-# View all events in a logbook
-logbook:
-
-# Enables support for tracking state changes over time.
-history:
+  # Customization file
+  #customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-#introduction:
-
-# Checks for available updates
-updater:
-
-# Track the sun
-sun:
-
-# Discover some devices automatically
-discovery:
+introduction:
 
 # Enables the frontend
 frontend:
 
-# Allows you to issue voice commands from the frontend
-conversation:
+# Enables configuration UI
+config:
 
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
 
-####################################################
-################    Connected  #####################
-####################################################
-ifttt:
-  key: !env_var IFTT_KEY
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
 
 wink:
-  email: !env_var WINK_EMAIL
-  password: !env_var WINK_PASSWORD
-  client_id: !env_var WINK_CLIENT_ID
-  client_secret: !env_var WINK_CLIENT_SECRET
+  email: !env_var !secret WINK_EMAIL
+  password: !env_var !secret WINK_PASSWORD
+  client_id: !env_var !secret WINK_CLIENT_ID
+  client_secret: !env_var !secret WINK_CLIENT_SECRET
 
-wemo:
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
 
-####################################################
-################     Tracking  #####################
-####################################################
+# Enables support for tracking state changes over time
+history:
 
-# device_tracker:
-#   platform: nmap_tracker
-#   hosts: 192.168.1.1/24
-#   home_interval: 10
+# View all events in a logbook
+logbook:
 
-####################################################
-################    Automation #####################
-####################################################
+# Enables a map showing the location of tracked devices
+map:
 
-# automation:
-#   - alias: 'Lights on before sunrise'
-#     trigger:
-#       platform: sun
-#       event: sunrise
-#       offset: "-00:45:00"
-#     action:
-#       service: scene.turn_on
-#       entity_id: scene.day
+# Track the sun
+sun:
 
+# Weather prediction
+sensor:
+  - platform: yr
 
-automation: !include_dir_merge_list automation
-scene: !include_dir_merge_list scenes
-sensor: !include_dir_merge_list sensors
+# Text to speech
+tts:
+  - platform: google
 
+# Cloud
+cloud:
 
+#group: !include groups.yaml
+#automation: !include automations.yaml
+#script: !include scripts.yaml
