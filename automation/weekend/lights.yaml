@@ -1,7 +1,7 @@
 - alias: 'Lights on in the Morning'
   trigger:
     - platform: time
-      hours: 7
+      hours: 9
       minutes: 00
       seconds: 0
   condition:
@@ -16,10 +16,10 @@
     service: scene.turn_on
     entity_id: scene.morning
 
-- alias: 'Lights off during the weekdays'
+- alias: 'Lights off during the weekend'
   trigger:
     - platform: time
-      hours: 9
+      hours: 10
       minutes: 00
       seconds: 0
   condition:
@@ -34,12 +34,11 @@
     service: scene.turn_on
     entity_id: scene.lights_off
 
-- alias: 'Welcome Home Lighting'
+- alias: 'Lightings On Weekend'
   trigger:
-    - platform: time
-      hours: 16
-      minutes: 30
-      seconds: 0
+    platform: sun
+    event: sunset
+    offset: '-01:00:00'
   condition:
     - condition: time
       weekday:
@@ -74,7 +73,7 @@
   trigger:
     - platform: time
       hours: 22
-      minutes: 15
+      minutes: 45
       seconds: 0
   condition:
     - condition: time

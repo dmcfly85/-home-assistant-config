@@ -1,0 +1,6 @@
+- name: Accent
+  entities:
+    switch.bathroom_accent:
+      state: on
+    switch.kitchen_cabinet_lights:
+      state: on

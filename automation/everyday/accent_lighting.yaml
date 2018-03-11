@@ -4,8 +4,8 @@
     event: sunrise
     offset: '+01:00:00'
   action:
-    service: group.turn_off
-    entity_id: group.accent_lighting
+    service: scene.turn_off
+    entity_id: scene.accent
 
 - alias: 'Accent On at Night'
   trigger:
@@ -13,5 +13,5 @@
     event: sunset
     offset: '-01:00:00'
   action:
-    service: group.turn_on
-    entity_id: group.accent_lighting
+    service: scene.turn_off
+    entity_id: scene.accent
