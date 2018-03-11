@@ -5,15 +5,6 @@
       minutes: 45
       seconds: 0
   condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
   action:
     service: switch.turn_on
     entity_id: switch.fans
@@ -24,16 +15,24 @@
       hours: 6
       minutes: 00
       seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
   action:
     service: switch.turn_off
     entity_id: switch.fans
+
+- alias: 'Bathroom Accent On at Night'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-01:00:00'
+  action:
+    service: switch.turn_on
+    entity_id: switch.bathroom_accent
+
+- alias: 'Bathroom Accent Off in Morning'
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: '+01:00:00'
+  action:
+    service: switch.turn_off
+    entity_id: switch.bathroom_accent
