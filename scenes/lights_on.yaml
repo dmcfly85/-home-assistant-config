@@ -1,12 +1,9 @@
-- name: Morning
+- name: Lights On
   entities:
     light.dining_room:
       state: on
-      brightness: 40
-    light.black_lamp_1:
-      state: on
       brightness: 256
-    light.black_lamp_2:
+    light.black_lamp:
       state: on
       brightness: 256
     light.white_lamp:

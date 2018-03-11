@@ -1,0 +1,6 @@
+accent_lighting:
+    name: Accent Lighting
+    view: yes
+    entities:
+      - switch.bathroom_accent
+      - switch.kitchen_cabinet_lights

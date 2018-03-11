@@ -1,0 +1,17 @@
+- alias: 'Accent Off in Morning'
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: '+01:00:00'
+  action:
+    service: group.turn_off
+    entity_id: group.accent_lighting
+
+- alias: 'Accent On at Night'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-01:00:00'
+  action:
+    service: group.turn_on
+    entity_id: group.accent_lighting

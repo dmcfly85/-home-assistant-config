@@ -1,0 +1,8 @@
+- alias: 'One Lamp Before Sunset'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-01:00:00'
+  action:
+    service: light.turn_on
+    entity_id: light.orange_lamp

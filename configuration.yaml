@@ -72,7 +72,7 @@ tts:
 # Cloud
 cloud:
 
-#group: !include_dir_merge_list groups
+group: !include_dir_merge_list groups
 automation: !include_dir_merge_list automation
 #script: !include scripts.yaml
 #lights !include_dir_merge_list groups

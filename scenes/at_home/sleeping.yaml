@@ -7,8 +7,7 @@
       light.black_lamp_2:
         state: off
       light.white_lamp:
-        state: on
-        brightness: 50
+        state: off
       light.orange_lamp:
         state: on
         brightness: 25

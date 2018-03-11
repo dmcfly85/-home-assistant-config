@@ -1,0 +1,10 @@
+- name: Lights Off
+  entities:
+    light.dining_room:
+      state: off
+    light.black_lamp_:
+      state: off
+    light.white_lamp:
+      state: off
+    light.orange_lamp:
+      state: off
