@@ -1,8 +1,0 @@
-light:
-  - platform: group
-    name: Black Lamp
-    entities:
-      - light.black_lamp_1
-      - light.black_lamp_1
-
-

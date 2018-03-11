@@ -1,5 +1,10 @@
 deps
-.ha-secrets
+secrets.yaml
+entity_registry.yaml
+home-assistant_v2.db*
+.cloud/production_auth.json
+production_auth.json
+.wink.conf
 *.log
 *.db
 .HA_VERSION
