@@ -41,10 +41,10 @@ updater:
 discovery:
 
 wink:
-  email: !env_var !secret WINK_EMAIL
-  password: !env_var !secret WINK_PASSWORD
-  client_id: !env_var !secret WINK_CLIENT_ID
-  client_secret: !env_var !secret WINK_CLIENT_SECRET
+  email: !secret WINK_EMAIL
+  password: !secret WINK_PASSWORD
+  client_id: !secret WINK_CLIENT_ID
+  client_secret: !secret WINK_CLIENT_SECRET
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
