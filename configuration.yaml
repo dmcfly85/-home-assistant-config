@@ -73,6 +73,6 @@ tts:
 cloud:
 
 #group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_merge_list automation
 #script: !include scripts.yaml
 scene: !include_dir_merge_list scenes
