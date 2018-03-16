@@ -73,8 +73,8 @@
 - alias: 'Night Lighting'
   trigger:
     - platform: time
-      hours: 22
-      minutes: 15
+      hours: 23
+      minutes: 30
       seconds: 0
   condition:
     - condition: time
