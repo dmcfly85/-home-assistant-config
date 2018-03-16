@@ -1,7 +1,3 @@
-  accent_lighting:
-    name: Accent Lighting
-    view: yes
-    hidden: false
-    entities:
-      - switch.bathroom_accent
-      - switch.kitchen_cabinet_lights
+Accent Lighting
+  - switch.bathroom_accent
+  - switch.kitchen_cabinet_lights
