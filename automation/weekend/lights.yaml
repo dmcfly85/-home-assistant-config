@@ -7,11 +7,8 @@
   condition:
     - condition: time
       weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+        - sat
+        - sun
   action:
     service: scene.turn_on
     entity_id: scene.morning
@@ -25,11 +22,8 @@
   condition:
     - condition: time
       weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+        - sat
+        - sun
   action:
     service: scene.turn_on
     entity_id: scene.lights_off
@@ -42,11 +36,8 @@
   condition:
     - condition: time
       weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+        - sat
+        - sun
   action:
     service: scene.turn_on
     entity_id: scene.early_evening
@@ -60,11 +51,8 @@
   condition:
     - condition: time
       weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+        - sat
+        - sun
   action:
     service: scene.turn_on
     entity_id: scene.late_evening
@@ -78,11 +66,8 @@
   condition:
     - condition: time
       weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+        - sat
+        - sun
   action:
     service: scene.turn_on
     entity_id: scene.night
