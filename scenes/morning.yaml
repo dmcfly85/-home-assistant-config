@@ -12,3 +12,5 @@
       light.orange_lamp:
         state: on
         brightness: 200
+      switch.dustin_closet:
+        state: on

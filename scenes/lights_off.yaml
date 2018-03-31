@@ -8,3 +8,5 @@
       state: off
     light.orange_lamp:
       state: off
+    switch.dustin_closet:
+      state: off
