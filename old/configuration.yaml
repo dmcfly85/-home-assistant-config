@@ -2,29 +2,28 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 47.6302
-  longitude: -122.321
+  latitude: 47.6355
+  longitude: -122.3235
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 0
+  elevation: 32
   # metric for Metric, imperial for Imperial
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Los_Angeles
   # Customization file
-  customize: !include customize.yaml
+  #customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-introduction:
-
-# Enables the frontend
-frontend:
+#introduction:
 
 # Enables configuration UI
 config:
 
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret API_PASSWORD
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -37,6 +36,12 @@ updater:
 
 # Discover some devices automatically
 discovery:
+
+wink:
+  email: !secret WINK_EMAIL
+  password: !secret WINK_PASSWORD
+  client_id: !secret WINK_CLIENT_ID
+  client_secret: !secret WINK_CLIENT_SECRET
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -53,12 +58,11 @@ map:
 # Track the sun
 sun:
 
-# Allow diagnosing system problems
-system_health:
+frontend:
+  javascript_version: latest
 
-# Sensors
+# Weather prediction
 sensor:
-  # Weather prediction
   - platform: yr
 
 # Text to speech
@@ -68,9 +72,8 @@ tts:
 # Cloud
 cloud:
 
-# Wink
-wink:
-
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+group: !include_dir_merge_list groups
+scene: !include_dir_merge_list scenes
+automation: !include_dir_merge_list automation
+#script: !include scripts.yaml
+#lights !include_dir_merge_list groups
