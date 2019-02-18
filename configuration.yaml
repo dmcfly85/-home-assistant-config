@@ -79,13 +79,13 @@ ring:
   username: !secret RING_USERNAME
   password: !secret RING_PASSWORD
 
-media_player:
-  - platform: samsungtv
-    host: 10.0.1.36
-    mac: 00:c3:f4:2e:77:80
-    port: 8081
+# media_player:
+#   - platform: samsungtv
+#     host: 10.0.1.36
+#     mac: 00:c3:f4:2e:77:80
+#     port: 8001
 
-camera:
+sensor:
   - platform: ring
 
 # group: !include groups.yaml
