@@ -71,6 +71,6 @@ cloud:
 # Wink
 wink:
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+# group: !include groups.yaml
+# automation: !include automations.yaml
+# script: !include scripts.yaml
