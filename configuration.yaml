@@ -83,6 +83,7 @@ media_player:
   - platform: samsungtv
     host: 10.0.1.36
     mac: 00:c3:f4:2e:77:80
+    port: 8081
 
 camera:
   - platform: ring
