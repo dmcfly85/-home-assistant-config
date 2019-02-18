@@ -11,7 +11,7 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Los_Angeles
   # Customization file
-  customize: !include customize.yaml
+  # customize: !include customize.yaml
 
 # Show links to resources in log and frontend
 introduction:
