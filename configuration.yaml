@@ -70,7 +70,10 @@ cloud:
 
 # Wink
 wink:
-
+  email: !secret WINK_EMAIL
+  password: !secret WINK_PASSWORD
+  client_id: !secret WINK_CLIENT_ID
+  client_secret: !secret WINK_CLIENT_SECRET
 # group: !include groups.yaml
 # automation: !include automations.yaml
 # script: !include scripts.yaml
