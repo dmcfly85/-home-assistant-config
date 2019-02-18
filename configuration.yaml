@@ -74,6 +74,11 @@ wink:
   password: !secret WINK_PASSWORD
   client_id: !secret WINK_CLIENT_ID
   client_secret: !secret WINK_CLIENT_SECRET
+
+ring:
+  username: !secret RING_USERNAME
+  password: !secret RING_PASSWORD
+
 # group: !include groups.yaml
 # automation: !include automations.yaml
 # script: !include scripts.yaml
