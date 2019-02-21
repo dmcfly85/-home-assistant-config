@@ -60,6 +60,7 @@ system_health:
 sensor:
   # Weather prediction
   - platform: yr
+  - platform: ring
 
 # Text to speech
 tts:
@@ -93,8 +94,8 @@ ring:
 #     mac: 00:cC:F4:2E:77:80
 #     port: 8001
 
-sensor:
-  - platform: ring
+# sensor:
+
 
 # emulated_hue:
 #   listen_port: 80
