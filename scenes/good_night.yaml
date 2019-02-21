@@ -1,12 +1,12 @@
 name: Night
-  entities:
-  light.dining_room:
-    state: off
-  light.brass_lamp:
-    state: off
-  light.black_lamp:
-    state: off
-  light.white_lamp:
-    state: off
-  light.kitchen:
-    state: off
+entities:
+light.dining_room:
+  state: off
+light.brass_lamp:
+  state: off
+light.black_lamp:
+  state: off
+light.white_lamp:
+  state: off
+light.kitchen:
+  state: off
