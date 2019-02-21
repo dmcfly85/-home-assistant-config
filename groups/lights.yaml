@@ -1,7 +1,21 @@
-light:
-  - platform: group
-    name: Kitchen Lights
-    entities:
-      - light.kitchen_1
-      - light.kitchen_2
-      - light.kitchen_3
+# light:
+#   - platform: group
+#     name: Kitchen Lights
+#     entities:
+#       - light.kitchen_1
+#       - light.kitchen_2
+#       - light.kitchen_3
+
+# light:
+#   - platform: group
+#     name: Black Lamp
+#     entities:
+#       - light.black_lamp_1
+#       - light.black_lamp_2
+
+# light:
+#   - platform: group
+#     name: The Nook
+#     entities:
+#       - light.black_lamp_1
+#       - light.black_lamp_2

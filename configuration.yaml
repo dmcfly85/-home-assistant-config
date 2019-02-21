@@ -72,6 +72,9 @@ cloud:
       include_domains:
         - switch
         - light
+      exclude_domains:
+        - remote
+
 
 # Wink
 wink:
