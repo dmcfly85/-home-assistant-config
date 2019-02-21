@@ -1,0 +1,7 @@
+light:
+  - platform: group
+    name: Kitchen Lights
+    entities:
+      - light.kitchen_1
+      - light.kitchen_2
+      - light.kitchen_3

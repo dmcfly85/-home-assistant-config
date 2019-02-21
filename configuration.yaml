@@ -96,6 +96,6 @@ sensor:
 # emulated_hue:
 #   listen_port: 80
 
-# group: !include groups.yaml
+group: !include groups.yaml
 # automation: !include automations.yaml
 # script: !include scripts.yaml
