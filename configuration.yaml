@@ -100,6 +100,6 @@ sensor:
 #   listen_port: 80
 
 # groups: !include_dir_list groups
-scenes: !include_dir_list scenes
+scene: !include_dir_list scenes
 # automation: !include automations.yaml
 # script: !include scripts.yaml
