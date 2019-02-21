@@ -9,6 +9,7 @@ production_auth.json
 *.db
 .HA_VERSION
 .uuid
+.storage
 
 # OS generated files #
 ######################
