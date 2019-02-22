@@ -70,18 +70,18 @@ tts:
 cloud:
   alexa:
     filter:
+      include_entities:
+        - light.kitchen
+        - light.black_lamp
+        - light.white_lamp
+        - light.brass_lamp
+        - light.dining_room
       include_domains:
         - scene
-
       exclude_domains:
         - remote
         - switch
         - light
-
-      entity_config:
-        light.kitchen:
-          name: Kitchen Light
-          description: The light in the kitchen
 
 
 
