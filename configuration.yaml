@@ -73,6 +73,7 @@ cloud:
       include_domains:
         - switch
         - light
+        - scene
       exclude_domains:
         - remote
 

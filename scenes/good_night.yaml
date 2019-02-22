@@ -1,12 +1,7 @@
-name: Night
+name: Good Night
 entities:
-light.dining_room:
-  state: off
-light.brass_lamp:
-  state: off
-light.black_lamp:
-  state: off
-light.white_lamp:
-  state: off
-light.kitchen:
-  state: off
+light.dining_room: false
+light.brass_lamp: false
+light.black_lamp: false
+light.white_lamp: false
+light.kitchen: false
