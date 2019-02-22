@@ -1,4 +1,4 @@
-name: Night
+name: Sleep
 entities:
   light.dining_room: false
   light.brass_lamp:
@@ -9,5 +9,5 @@ entities:
   light.kitchen: false
   switch.kitchen_cabinet_lights: true
   switch.bathroom_accent: true
-  switch.the_racks: true
+  switch.the_racks: false
 

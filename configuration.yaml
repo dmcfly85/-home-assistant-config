@@ -83,8 +83,6 @@ cloud:
         - switch
         - light
 
-
-
 # Wink
 wink:
   email: !secret WINK_EMAIL
