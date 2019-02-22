@@ -1,7 +1,7 @@
 name: Good Night
 entities:
-light.dining_room: false
-light.brass_lamp: false
-light.black_lamp: false
-light.white_lamp: false
-light.kitchen: false
+  light.dining_room: false
+  light.brass_lamp: false
+  light.black_lamp: false
+  light.white_lamp: false
+  light.kitchen: false

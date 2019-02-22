@@ -71,11 +71,18 @@ cloud:
   alexa:
     filter:
       include_domains:
-        - switch
-        - light
         - scene
+
       exclude_domains:
         - remote
+        - switch
+        - light
+
+      entity_config:
+        light.kitchen:
+          name: Kitchen Light
+          description: The light in the kitchen
+
 
 
 # Wink
