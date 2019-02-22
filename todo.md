@@ -1,2 +1,0 @@
-- Vizio TV
-  - add to scenes

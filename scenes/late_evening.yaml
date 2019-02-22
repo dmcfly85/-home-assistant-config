@@ -1,0 +1,16 @@
+name: Late Evening
+entities:
+  light.dining_room: false
+  light.brass_lamp:
+    state: true
+    brightness: 100
+  light.black_lamp:
+    state: true
+    brightness: 100
+  light.white_lamp:
+    state: true
+    brightness: 50
+  light.kitchen: false
+  switch.kitchen_cabinet_lights: true
+  switch.bathroom_accent: true
+  switch.the_racks: true
