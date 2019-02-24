@@ -1,6 +1,6 @@
 people:
-    name: People
-    view: false
-    entities:
-      - person.dustin
-      - person.savanna
+  name: People
+  view: false
+  entities:
+    - person.dustin
+    - person.savanna
