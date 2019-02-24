@@ -77,3 +77,9 @@ scene: !include_dir_merge_list scenes
 automation: !include_dir_merge_list automation
 #script: !include scripts.yaml
 #lights !include_dir_merge_list groups
+
+input_boolean:
+  holiday_override:
+    name: Holiday Override
+    initial: off
+    icon: mdi:car

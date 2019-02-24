@@ -13,17 +13,3 @@
     service: switch.turn_off
     entity_id: switch.fans
 
-- alias: 'Fans On at Night'
-  trigger:
-    - platform: time
-      hours: 10
-      minutes: 45
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - sat
-        - sun
-  action:
-    service: switch.turn_on
-    entity_id: switch.fans

@@ -1,35 +1,20 @@
-- alias: 'Fans Off in Morning'
-  trigger:
-    - platform: time
-      hours: 7
-      minutes: 00
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    service: switch.turn_off
-    entity_id: switch.fans
-
-- alias: 'Fans On at Night'
-  trigger:
-    - platform: time
-      hours: 10
-      minutes: 45
-      seconds: 0
-  condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    service: switch.turn_on
-    entity_id: switch.fans
+# - alias: 'Fans Off in Morning'
+#   trigger:
+#     - platform: time
+#       hours: 7
+#       minutes: 00
+#       seconds: 0
+#   condition:
+#     - condition: time
+#       weekday:
+#         - mon
+#         - tue
+#         - wed
+#         - thu
+#         - fri
+#     - condition: state
+#       entity_id: input_boolean.holiday_override
+#       state: 'off'
+#   action:
+#     service: switch.turn_off
+#     entity_id: switch.bedroom_fans

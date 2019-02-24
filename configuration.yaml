@@ -107,15 +107,15 @@ device_tracker:
     hosts: 10.0.0.1/24
     scan_options: " --privileged -sP "
     new_device_defaults:
-      track_new_devices: true
+      track_new_devices: false
       hide_if_away: false
 
 # emulated_hue:
 #   listen_port: 80
 
-group: !include_dir_list groups/
+group: !include_dir_merge_list groups/
 scene: !include_dir_list scenes/
-# automation: !include automations.yaml
+automation: !include automations.yaml
 # script: !include scripts.yaml
 
 
@@ -128,3 +128,13 @@ person:
     id: savanna
     device_trackers:
       - device_tracker.savanna_iphone
+
+input_boolean:
+  holiday_override:
+    name: Holiday Override
+    initial: off
+    icon: mdi:car
+  override_light_automation:
+    name: Override Light Automation
+    initial: off
+    icon: mdi:car
