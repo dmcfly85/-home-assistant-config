@@ -113,7 +113,7 @@ device_tracker:
 # emulated_hue:
 #   listen_port: 80
 
-# groups: !include_dir_list groups
+group: !include_dir_list groups/
 scene: !include_dir_list scenes/
 # automation: !include automations.yaml
 # script: !include scripts.yaml
