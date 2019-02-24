@@ -105,6 +105,10 @@ ring:
 device_tracker:
   - platform: nmap_tracker
     hosts: 10.0.0.1/24
+    scan_options: " --privileged -sP "
+    new_device_defaults:
+      track_new_devices: true
+      hide_if_away: false
 
 # emulated_hue:
 #   listen_port: 80
