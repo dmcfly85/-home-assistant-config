@@ -113,10 +113,7 @@ device_tracker:
 # emulated_hue:
 #   listen_port: 80
 
-group: !include_dir_merge_list groups/
-scene: !include_dir_list scenes/
-automation: !include_dir_merge_list automations/
-# script: !include scripts.yaml
+
 
 
 person:
@@ -138,3 +135,8 @@ input_boolean:
     name: Override Light Automation
     initial: off
     icon: mdi:car
+
+group: !include_dir_merge_list groups/
+scene: !include_dir_list scenes/
+automation: !include_dir_merge_list automations/
+# script: !include scripts.yaml
