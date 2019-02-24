@@ -1,0 +1,20 @@
+name: Early Evening
+entities:
+  light.dining_room:
+    state: true
+    brightness: 255
+  light.brass_lamp:
+    state: true
+    brightness: 255
+  light.black_lamp:
+    state: true
+    brightness: 255
+  light.white_lamp:
+    state: true
+    brightness: 255
+  light.kitchen:
+    state: true
+    brightness: 255
+  switch.kitchen_cabinet_lights: true
+  switch.bathroom_accent: true
+  switch.the_racks: true

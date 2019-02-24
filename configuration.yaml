@@ -102,6 +102,9 @@ ring:
 
 # sensor:
 
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 10.0.0.1/24
 
 # emulated_hue:
 #   listen_port: 80

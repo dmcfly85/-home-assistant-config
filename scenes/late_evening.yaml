@@ -6,7 +6,7 @@ entities:
     brightness: 100
   light.black_lamp:
     state: true
-    brightness: 100
+    brightness: 50
   light.white_lamp:
     state: true
     brightness: 50
