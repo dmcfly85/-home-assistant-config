@@ -1,9 +1,7 @@
 - alias: "Wake Up"
   trigger:
     - platform: time
-      hours: 7
-      minutes: 00
-      seconds: 0
+      at: '07:00:00'
   condition:
     - condition: time
       weekday:
@@ -22,9 +20,7 @@
 - alias: "Morning"
   trigger:
     - platform: time
-      hours: 7:45
-      minutes: 00
-      seconds: 0
+      at: '07:45:00'
   condition:
     - condition: time
       weekday:
@@ -42,3 +38,38 @@
   action:
     service: scene.turn_on
     entity_id: scene.morning
+
+- alias: "Off to Work"
+  trigger:
+    - platform: time
+      at: '09:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: input_boolean.holiday_override
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.override_light_automation
+      state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.scene.not_home_day
+
+- alias: "Lights On If No One Home"
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:45:00"
+  condition:
+    condition: state
+    entity_id: group.people
+    state: not_home
+  action:
+    service: scene.turn_on
+    entity_id: group.no_home_night
