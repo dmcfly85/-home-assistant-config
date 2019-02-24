@@ -117,3 +117,14 @@ device_tracker:
 scene: !include_dir_list scenes/
 # automation: !include automations.yaml
 # script: !include scripts.yaml
+
+
+person:
+  - name: Dustin
+    id: dustin
+    device_trackers:
+      - device_tracker.dustin_iphone
+  - name: Savanna
+    id: savanna
+    device_trackers:
+      - device_tracker.savanna_iphone
