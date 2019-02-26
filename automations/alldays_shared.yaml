@@ -1,0 +1,30 @@
+# - alias: "One lights on if no one home before sunset"
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sun.sun
+#     value_template: "{{ state.attributes.elevation }}"
+#     below: -4.0
+#   condition:
+#     condition: state
+#     entity_id: group.people
+#     state: not_home
+#   action:
+#     service: scene.turn_on
+#     entity_id: group.no_home_night
+
+# - alias: "Lights on if people before sunset"
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sun.sun
+#     value_template: "{{ state.attributes.elevation }}"
+#     below: -4.0
+#   condition:
+#     condition: state
+#     entity_id: group.people
+#     state: not_home
+#   action:
+#     service: scene.turn_on
+#     entity_id: group.no_home_night
+
+
+

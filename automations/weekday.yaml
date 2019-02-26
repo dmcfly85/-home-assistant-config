@@ -1,3 +1,20 @@
+- alias: "test"
+  trigger:
+    - platform: time
+      at: '07:00:00'
+  action:
+    - service: python_script.fade_in
+      data_template:
+        entity_id: light.kitchen
+        ideal_start_angle_of_sun: -4
+        current_angle_of_sun: -2
+        time_of_sunset: "{{ as_timestamp(now()) }}"
+        end_level_pct: 100
+        start_level_pct: 0
+        step_in_level_pct: 2
+        time_now: "{{ as_timestamp(now()) }}"
+
+
 - alias: "Wake Up"
   trigger:
     - platform: time
@@ -14,8 +31,11 @@
       entity_id: input_boolean.holiday_override
       state: 'off'
   action:
-    service: scene.turn_on
-    entity_id: scene.wake
+    - service: light.turn_on
+      data:
+        entity_id: light.white_lamp
+        brightness: 255
+        transition: 300
 
 - alias: "Morning"
   trigger:
