@@ -3,7 +3,7 @@
     - platform: time
       at: '07:00:00'
   action:
-    - service: python_script.fade_in
+    - service: python_script.fade_up_against_sunset
       data_template:
         entity_id: light.kitchen
         ideal_start_angle_of_sun: -4
