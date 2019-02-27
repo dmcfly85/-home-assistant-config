@@ -3,7 +3,7 @@ entities:
   light.dining_room: false
   light.brass_lamp:
     state: true
-    brightness: 10
+    brightness: 20
   light.black_lamp: false
   light.white_lamp: false
   light.kitchen: false

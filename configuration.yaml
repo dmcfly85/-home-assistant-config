@@ -113,9 +113,6 @@ device_tracker:
 # emulated_hue:
 #   listen_port: 80
 
-
-
-
 person:
   - name: Dustin
     id: dustin
@@ -125,16 +122,6 @@ person:
     id: savanna
     device_trackers:
       - device_tracker.savanna_iphone
-
-input_boolean:
-  holiday_override:
-    name: Holiday Override
-    initial: off
-    icon: mdi:car
-  override_light_automation:
-    name: Override Light Automation
-    initial: off
-    icon: mdi:car
 
 group: !include_dir_merge_list groups/
 scene: !include_dir_list scenes/

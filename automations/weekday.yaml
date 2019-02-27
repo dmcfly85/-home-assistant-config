@@ -1,13 +1,10 @@
 - alias: "test fade"
-  trigger:
-    - platform: time
-      at: '07:00:00'
   action:
     - service: python_script.fade_up_against_sunset
       data_template:
         entity_id: light.kitchen
         ideal_start_angle_of_sun: -4
-        current_angle_of_sun: -3
+        current_angle_of_sun: -2
         time_of_sunset: "{{ as_timestamp(now()) }}"
         end_level_pct: 100
         start_level_pct: 0
@@ -15,9 +12,6 @@
         time_now: "{{ as_timestamp(now()) }}"
 
 - alias: "test2"
-  trigger:
-    - platform: time
-      at: '07:00:00'
   action:
     - service: python_script.fade_up_against_sunset
       data_template:
@@ -42,9 +36,6 @@
         - wed
         - thu
         - fri
-    - condition: state
-      entity_id: input_boolean.holiday_override
-      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.wake
@@ -61,12 +52,6 @@
         - wed
         - thu
         - fri
-    - condition: state
-      entity_id: input_boolean.holiday_override
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.override_light_automation
-      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.morning
@@ -83,12 +68,6 @@
         - wed
         - thu
         - fri
-    - condition: state
-      entity_id: input_boolean.holiday_override
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.override_light_automation
-      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.not_home_day
