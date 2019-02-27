@@ -13,8 +13,6 @@
 #        start_level_pct: 0
 #
 
-
-
 entity_id  = data.get('entity_id')
 ideal_start_angle_of_sun = int(data.get('ideal_start_angle_of_sun'))
 current_angle_of_sun = float(data.get('current_angle_of_sun'))

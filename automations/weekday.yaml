@@ -1,4 +1,4 @@
-- alias: "test"
+- alias: "test fade"
   trigger:
     - platform: time
       at: '07:00:00'
@@ -7,7 +7,7 @@
       data_template:
         entity_id: light.kitchen
         ideal_start_angle_of_sun: -4
-        current_angle_of_sun: -2
+        current_angle_of_sun: -3
         time_of_sunset: "{{ as_timestamp(now()) }}"
         end_level_pct: 100
         start_level_pct: 0
