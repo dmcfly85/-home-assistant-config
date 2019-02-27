@@ -1,28 +1,28 @@
-- alias: "test fade"
-  action:
-    - service: python_script.fade_up_against_sunset
-      data_template:
-        entity_id: light.kitchen
-        ideal_start_angle_of_sun: -4
-        current_angle_of_sun: -2
-        time_of_sunset: "{{ as_timestamp(now()) }}"
-        end_level_pct: 100
-        start_level_pct: 0
-        step_in_level_pct: 2
-        time_now: "{{ as_timestamp(now()) }}"
+# - alias: "test fade"
+#   action:
+#     - service: python_script.fade_up_against_sunset
+#       data_template:
+#         entity_id: light.kitchen
+#         ideal_start_angle_of_sun: -4
+#         current_angle_of_sun: -2
+#         time_of_sunset: "{{ as_timestamp(now()) }}"
+#         end_level_pct: 100
+#         start_level_pct: 0
+#         step_in_level_pct: 2
+#         time_now: "{{ as_timestamp(now()) }}"
 
-- alias: "test2"
-  action:
-    - service: python_script.fade_up_against_sunset
-      data_template:
-        entity_id: group.all_lights
-        ideal_start_angle_of_sun: -4
-        current_angle_of_sun: "{{ states.sun.sun.attributes.azimuth }}"
-        time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) }}"
-        end_level_pct: 100
-        start_level_pct: 0
-        step_in_level_pct: 2
-        time_now: "{{ as_timestamp(now()) }}"
+# - alias: "test2"
+#   action:
+#     - service: python_script.fade_up_against_sunset
+#       data_template:
+#         entity_id: group.all_lights
+#         ideal_start_angle_of_sun: -4
+#         current_angle_of_sun: "{{ states.sun.sun.attributes.azimuth }}"
+#         time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) }}"
+#         end_level_pct: 100
+#         start_level_pct: 0
+#         step_in_level_pct: 2
+#         time_now: "{{ as_timestamp(now()) }}"
 
 - alias: "Wake Up"
   trigger:
