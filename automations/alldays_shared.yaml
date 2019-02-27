@@ -12,14 +12,14 @@
 #     service: scene.turn_on
 #     entity_id: group.not_home_night
 
-- alias: "Start fading lights as sunsets"
+- alias: Start fading lights as sunsets
   trigger:
     platform: numeric_state
     entity_id: sun.sun
     value_template: "{{ state.attributes.elevation }}"
-     below: -4.0
+      below: -4.0
   action:
-    - service: python_script.fade_up.against_sunset
+    service: python_script.fade_up.against_sunset
       data_template:
         entity_id: group.all_lights
         ideal_start_angle_of_sun: -4
