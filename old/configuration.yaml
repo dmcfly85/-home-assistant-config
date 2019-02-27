@@ -2,28 +2,29 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 47.6355
-  longitude: -122.3235
+  latitude: 47.638335
+  longitude: -122.326922
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 32
+  elevation: 0
   # metric for Metric, imperial for Imperial
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Los_Angeles
   # Customization file
-  #customize: !include customize.yaml
+  # customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-#introduction:
+introduction:
+
+# Enables the frontend
+frontend:
 
 # Enables configuration UI
 config:
 
-http:
-  # Secrets are defined in the file secrets.yaml
-  api_password: !secret API_PASSWORD
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -37,12 +38,6 @@ updater:
 # Discover some devices automatically
 discovery:
 
-wink:
-  email: !secret WINK_EMAIL
-  password: !secret WINK_PASSWORD
-  client_id: !secret WINK_CLIENT_ID
-  client_secret: !secret WINK_CLIENT_SECRET
-
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
@@ -52,34 +47,168 @@ history:
 # View all events in a logbook
 logbook:
 
+logger:
+  default: warning
+  logs:
+    homeassistant.components.python_script: debug
+
 # Enables a map showing the location of tracked devices
 map:
 
 # Track the sun
 sun:
 
-frontend:
-  javascript_version: latest
+# Allow diagnosing system problems
+system_health:
 
-# Weather prediction
+# Sensors
 sensor:
+  # Weather prediction
   - platform: yr
+  - platform: ring
+    #   - platform: template
+    #   sensors:
+    #     solar_angle:
+    #       value_template: '{{ states.sun.sun.attributes.elevation }}'
+    #       friendly_name: 'Sun angle'
+    #       unit_of_measurement: 'degrees'
+    #     sunrise:
+    #       value_template: '{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%H:%M") }}'
+    #     sunset:
+    #       value_template: '{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%H:%M") }}'
 
 # Text to speech
 tts:
   - platform: google
 
+
 # Cloud
 cloud:
+  alexa:
+    filter:
+      include_entities:
+        - light.kitchen
+        - light.black_lamp
+        - light.white_lamp
+        - light.brass_lamp
+        - light.dining_room
+      include_domains:
+        - scene
+      exclude_domains:
+        - remote
+        - switch
+        - light
 
-group: !include_dir_merge_list groups
-scene: !include_dir_merge_list scenes
-automation: !include_dir_merge_list automation
-#script: !include scripts.yaml
-#lights !include_dir_merge_list groups
+# Wink
+wink:
+  email: !secret WINK_EMAIL
+  password: !secret WINK_PASSWORD
+  client_id: !secret WINK_CLIENT_ID
+  client_secret: !secret WINK_CLIENT_SECRET
+
+ring:
+  username: !secret RING_USERNAME
+  password: !secret RING_PASSWORD
+
+# media_player:
+#   - platform: samsungtv
+#     host: 10.0.1.43
+#     mac: 00:cC:F4:2E:77:80
+#     port: 8001
+
+# sensor:
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 10.0.0.1/24
+    scan_options: " --privileged -sP "
+    new_device_defaults:
+      track_new_devices: false
+      hide_if_away: false
+
+# emulated_hue:
+#   listen_port: 80
+
+
+python_script:
+
+
+person:
+  - name: Dustin
+    id: dustin
+    device_trackers:
+      - device_tracker.dustin_iphone
+  - name: Savanna
+    id: savanna
+    device_trackers:
+      - device_tracker.savanna_iphone
 
 input_boolean:
   holiday_override:
     name: Holiday Override
     initial: off
     icon: mdi:car
+  override_light_automation:
+    name: Override Light Automation
+    initial: off
+    icon: mdi:car
+
+group: !include_dir_merge_list groups/
+scene: !include_dir_list scenes/
+automation: !include_dir_merge_list automations/
+# script: !include scripts.yaml
+
+# sensor:
+
+
+light:
+  - platform: group
+    name: All My Lights
+    entities:
+      - light.kitchen
+      - light.dinning_room
+      - light.black_lamp
+      - light.brass_lamp
+      - light.white_lamp
+
+# script:
+#   # Turns on the bedroom lights and then the living room lights 1 minute later
+#   wakeup:
+#     alias: Wake Up
+#     sequence:
+#       - service: logbook.log
+#         data_template:
+#           name: Kitchen
+#           message: 'before condio'
+#           # Optional
+#           entity_id: light.kitchen
+#           domain: light
+#       - condition: numeric_state
+#         entity_id: light.kitchen
+#         # value_template: '{% if states.light.kitchen.state == "on"  %}{{ states.light.kitchen.attributes.brightness }}{% else %}0{% endif %}'
+#         value_template: '{{ state.attributes.brightness }}'
+#         below: 250
+#       - service: logbook.log
+#         data_template:
+#           name: Kitchen
+#           message: 'after kitchen'
+#           # Optional
+#           entity_id: light.kitchen
+#           domain: light
+#       - service: light.turn_on
+#         entity_id: light.kitchen
+#         data_template:
+#           brightness: '{{states.light.kitchen.attributes.brightness + 25 }}'
+#         # data:
+#         #   brightness: '{{states.light.kitchen.attributes.brightness + 50}}'
+#       - delay:
+#           # supports seconds, milliseconds, minutes, hours
+#           seconds: 20
+#       - service: script.wakeuptwo
+
+#   wakeuptwo:
+#     alias: Wake Up two
+#     sequence:
+#       - service: script.wakeup
+
+

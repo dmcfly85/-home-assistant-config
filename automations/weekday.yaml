@@ -14,7 +14,6 @@
         step_in_level_pct: 2
         time_now: "{{ as_timestamp(now()) }}"
 
-
 - alias: "Wake Up"
   trigger:
     - platform: time
@@ -31,11 +30,8 @@
       entity_id: input_boolean.holiday_override
       state: 'off'
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.white_lamp
-        brightness: 255
-        transition: 300
+    service: scene.turn_on
+    entity_id: scene.wake
 
 - alias: "Morning"
   trigger:
@@ -80,16 +76,3 @@
   action:
     service: scene.turn_on
     entity_id: scene.not_home_day
-
-- alias: "Lights On If No One Home"
-  trigger:
-    platform: sun
-    event: sunset
-    offset: "-00:45:00"
-  condition:
-    condition: state
-    entity_id: group.people
-    state: not_home
-  action:
-    service: scene.turn_on
-    entity_id: group.no_home_night

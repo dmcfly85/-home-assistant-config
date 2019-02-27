@@ -18,3 +18,20 @@
 #   action:
 #     service: switch.turn_off
 #     entity_id: switch.bedroom_fans
+
+
+switch:
+  - platform: flux
+    lights:
+      - light.brass_lamp
+      - light.white_lamp
+      - light.black_lamp
+      - light.kitchen
+      - light.dining_room
+    name: Fluxer
+    stop_time: {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_local }}
+    brightness: 220
+    disable_brightness_adjust: false
+    mode: xy
+    transition: 30
+    interval: 60
