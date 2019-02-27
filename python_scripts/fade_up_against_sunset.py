@@ -17,7 +17,7 @@
 
 entity_id  = data.get('entity_id')
 ideal_start_angle_of_sun = int(data.get('ideal_start_angle_of_sun'))
-current_angle_of_sun = int(data.get('current_angle_of_sun'))
+current_angle_of_sun = float(data.get('current_angle_of_sun'))
 time_of_sunset = float(data.get('time_of_sunset'))
 time_now = float(data.get('time_now'))
 end_level_pct = int(data.get('end_level_pct'))
