@@ -45,7 +45,7 @@ absolute_degrees_of_sunset_thus_far = abs(ideal_start_angle_of_sun - current_ang
 percent_of_sunset_complete = absolute_degrees_of_sunset_thus_far / absolute_degrees_of_total_sunset
 
 # find time until the sunets
-time_till_sunset = time_of_sunset - time_now + 120
+time_till_sunset = time_of_sunset - time_now
 
 # Adjest the light level to start based on how mush sunset has already passed
 adjusted_start_level_pct = ((end_level_pct - start_level_pct) * percent_of_sunset_complete) + start_level_pct
