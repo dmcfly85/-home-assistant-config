@@ -30,7 +30,6 @@
     service: scene.turn_on
     entity_id: scene.morning
 
-
 - alias: "Off to Work"
   trigger:
     - platform: time
@@ -47,19 +46,18 @@
     service: scene.turn_on
     entity_id: scene.not_home_day
 
-
 - alias: "Late Evening"
   trigger:
     - platform: time
-      at: '19:00:00'
+      at: '21:15:00'
   condition:
     - condition: time
       weekday:
+        - sun
         - mon
         - tue
         - wed
         - thu
-        - fri
   action:
     service: scene.turn_on
     entity_id: scene.late_evening
