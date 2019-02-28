@@ -25,7 +25,7 @@ config:
 logger:
   default: warning
   logs:
-    homeassistant.components.python_script: debug
+    homeassistant.components.python_script: info
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
