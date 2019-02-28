@@ -28,8 +28,8 @@
       entity_id: group.all_lights
       ideal_start_angle_of_sun: 4
       current_angle_of_sun: 4
-      time_of_sunset: "{{ as_timestamp(now()) }}"
+      time_of_sunset: "{{ as_timestamp(now()) + 300 }}"
       end_level_pct: 100
       start_level_pct: 0
       step_in_level_pct: 2
-      time_now: "{{ as_timestamp(now()) + 300 }}"
+      time_now: "{{ as_timestamp(now()) }}"

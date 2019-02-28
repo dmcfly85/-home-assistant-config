@@ -26,15 +26,15 @@ end_level_pct = int(data.get('end_level_pct'))
 step_pct  = int(data.get('step_in_level_pct'))
 start_level_pct = int(data.get('start_level_pct'))
 
-logger.info("""Starting fade_up_against_sunset with
+logger.warn("""Starting fade_up_against_sunset with
 entity_id: %s
 ideal_start_angle_of_sun: %f
 current_angle_of_sun: %f
 time_of_sunset: %f
 time_now: %f
 end_level_pct: %i
-start_level_pct %i
-step_pct %i
+start_level_pct: %i
+step_pct: %i
 """ % (entity_id, ideal_start_angle_of_sun, current_angle_of_sun, time_of_sunset, time_now, end_level_pct, start_level_pct, step_pct ) )
 
 
@@ -51,20 +51,21 @@ time_till_sunset = time_of_sunset - time_now
 adjusted_start_level_pct = ((end_level_pct - start_level_pct) * percent_of_sunset_complete) + start_level_pct
 
 # How much to wait between each increase of ligts
-sleep_delay = time_till_sunset / step_pct
+sleep_delay = (time_till_sunset / (end_level_pct - adjusted_start_level_pct ) * step_pct )
 
 start_level = int(255*adjusted_start_level_pct/100)
 end_level = int(255*end_level_pct/100)
 step = int(255*step_pct/100)
 
-logger.debug("""Starting fade_up_against_sunset
+logger.warn("""Starting fade_up_against_sunset
 absolute_degrees_of_total_sunset: %f
 absolute_degrees_of_sunset_thus_far: %f
 percent_of_sunset_complete: %f
 time_till_sunset: %f
 adjusted_start_level_pct: %f
 step: %i
-""" % (absolute_degrees_of_total_sunset, absolute_degrees_of_sunset_thus_far, percent_of_sunset_complete, time_till_sunset, adjusted_start_level_pct, step ) )
+sleep_delay: %f
+""" % (absolute_degrees_of_total_sunset, absolute_degrees_of_sunset_thus_far, percent_of_sunset_complete, time_till_sunset, adjusted_start_level_pct, step, sleep_delay ) )
 
 
 new_level = start_level
@@ -72,10 +73,10 @@ while new_level < end_level :
 	states = hass.states.get(entity_id)
 	current_level = states.attributes.get('brightness') or 0
 	if (current_level > new_level) :
-		logger.debug('Exiting Fade In')
+		logger.warn('Exiting Fade In')
 		break;
 	else :
-		logger.debug('Setting brightness of ' + str(entity_id) + ' from ' + str(current_level) + ' to ' + str(new_level))
+		logger.warn('Setting brightness of ' + str(entity_id) + ' from ' + str(current_level) + ' to ' + str(new_level))
 		data = { "entity_id" : entity_id, "brightness" : new_level }
 		hass.services.call('light', 'turn_on', data)
 		new_level = new_level + step
