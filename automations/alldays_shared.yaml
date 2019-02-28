@@ -3,7 +3,8 @@
     platform: numeric_state
     entity_id: sun.sun
     value_template: "{{ state.attributes.elevation }}"
-    below: 4.0
+    below: 4.1
+    above: 3.9
   action:
     service: python_script.fade_up_against_sunset
     data_template:
@@ -21,7 +22,8 @@
     platform: numeric_state
     entity_id: sun.sun
     value_template: "{{ state.attributes.elevation }}"
-    below: 4.0
+    below: 4.1
+    above: 3.90
   action:
     service: python_script.fade_up_against_sunset
     data_template:
