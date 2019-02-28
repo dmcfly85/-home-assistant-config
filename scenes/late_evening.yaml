@@ -1,6 +1,5 @@
 name: Late Evening
 entities:
-  light.dining_room: false
   light.brass_lamp:
     state: true
     brightness: 100
