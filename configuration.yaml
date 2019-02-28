@@ -100,7 +100,7 @@ ring:
 #     mac: 00:cC:F4:2E:77:80
 #     port: 8001
 
-# sensor:
+python_script:
 
 device_tracker:
   - platform: nmap_tracker
