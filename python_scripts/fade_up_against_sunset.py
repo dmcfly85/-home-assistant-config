@@ -1,20 +1,24 @@
-
 # Usage
+# - alias: "Start fading lights as sunsets"
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sun.sun
+#     value_template: "{{ state.attributes.elevation }}"
+#     below: 4.0
 #   action:
-#    - service: python_script.fade_in
-#      data_template:
-#        entity_id: light.kitchen
-#        ideal_start_angle_of_sun: -4
-#        current_angle_of_sun: {{ states.sun.sun.attributes.azimuth }}
-#        time_of_sunset: {{ as_timestamp(states.sun.sun.attributes.next_setting) }}
-#        time_now: {{ as_timestamp(now()) }}
-#        end_level_pct: 100
-#        step_in_level_pct: 2
-#        start_level_pct: 0
-#
+#     service: python_script.fade_up_against_sunset
+#     data_template:
+#       entity_id: group.all_lights
+#       ideal_start_angle_of_sun: 4
+#       current_angle_of_sun: "{{ states.sun.sun.attributes.elevation }}"
+#       time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) }}"
+#       end_level_pct: 100
+#       start_level_pct: 0
+#       step_in_level_pct: 2
+#       time_now: "{{ as_timestamp(now()) }}"
 
 entity_id  = data.get('entity_id')
-ideal_start_angle_of_sun = int(data.get('ideal_start_angle_of_sun'))
+ideal_start_angle_of_sun = float(data.get('ideal_start_angle_of_sun'))
 current_angle_of_sun = float(data.get('current_angle_of_sun'))
 time_of_sunset = float(data.get('time_of_sunset'))
 time_now = float(data.get('time_now'))
