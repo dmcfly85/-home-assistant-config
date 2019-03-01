@@ -19,6 +19,8 @@ introduction:
 # Enables the frontend
 frontend:
 
+ios:
+
 # Enables configuration UI
 config:
 
@@ -67,6 +69,12 @@ sensor:
   # Weather prediction
   - platform: yr
   - platform: ring
+  - platform: template
+    sensors:
+      solar_angle:
+        friendly_name: "Sun angle"
+        unit_of_measurement: 'degrees'
+        value_template: "{{ state_attr('sun.sun', 'elevation') }}"
 
 # Text to speech
 tts:
