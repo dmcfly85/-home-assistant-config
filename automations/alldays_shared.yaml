@@ -17,21 +17,21 @@
       step_in_level_pct: 2
       time_now: "{{ as_timestamp(now()) }}"
 
-- alias: "TESTING: Start fading lights as sunsets"
-  trigger:
-    platform: numeric_state
-    entity_id: sun.sun
-    value_template: "{{ state.attributes.elevation }}"
-    below: 4.1
-    above: 3.90
-  action:
-    service: python_script.fade_up_against_sunset
-    data_template:
-      entity_id: group.all_lights
-      ideal_start_angle_of_sun: 4
-      current_angle_of_sun: 4
-      time_of_sunset: "{{ as_timestamp(now()) + 300 }}"
-      end_level_pct: 100
-      start_level_pct: 0
-      step_in_level_pct: 2
-      time_now: "{{ as_timestamp(now()) }}"
+# - alias: "TESTING: Start fading lights as sunsets"
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sun.sun
+#     value_template: "{{ state.attributes.elevation }}"
+#     below: 4.1
+#     above: 3.90
+#   action:
+#     service: python_script.fade_up_against_sunset
+#     data_template:
+#       entity_id: group.all_lights
+#       ideal_start_angle_of_sun: 4
+#       current_angle_of_sun: 4
+#       time_of_sunset: "{{ as_timestamp(now()) + 300 }}"
+#       end_level_pct: 100
+#       start_level_pct: 0
+#       step_in_level_pct: 2
+#       time_now: "{{ as_timestamp(now()) }}"
