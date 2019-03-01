@@ -26,7 +26,7 @@ end_level_pct = int(data.get('end_level_pct'))
 step_pct  = int(data.get('step_in_level_pct'))
 start_level_pct = int(data.get('start_level_pct'))
 
-logger.warn("""Starting fade_up_against_sunset with
+logger.debug("""Starting fade_up_against_sunset with
 entity_id: %s
 ideal_start_angle_of_sun: %f
 current_angle_of_sun: %f
@@ -57,7 +57,7 @@ start_level = int(255*adjusted_start_level_pct/100)
 end_level = int(255*end_level_pct/100)
 step = int(255*step_pct/100)
 
-logger.warn("""Starting fade_up_against_sunset
+logger.debug("""Starting fade_up_against_sunset
 absolute_degrees_of_total_sunset: %f
 absolute_degrees_of_sunset_thus_far: %f
 percent_of_sunset_complete: %f
@@ -73,10 +73,10 @@ while new_level < end_level :
 	states = hass.states.get(entity_id)
 	current_level = states.attributes.get('brightness') or 0
 	if (current_level > new_level) :
-		logger.warn('Exiting Fade In')
+		logger.debug('Exiting Fade In')
 		break;
 	else :
-		logger.warn('Setting brightness of ' + str(entity_id) + ' from ' + str(current_level) + ' to ' + str(new_level))
+		logger.debug('Setting brightness of ' + str(entity_id) + ' from ' + str(current_level) + ' to ' + str(new_level))
 		data = { "entity_id" : entity_id, "brightness" : new_level }
 		hass.services.call('light', 'turn_on', data)
 		new_level = new_level + step
