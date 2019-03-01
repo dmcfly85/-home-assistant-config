@@ -28,7 +28,7 @@ logger:
   default: info
   logs:
     homeassistant.components.python_script: debug
-
+    homeassistant.components.device_tracker.nmap_tracker: warn
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
