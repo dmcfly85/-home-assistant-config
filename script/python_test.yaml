@@ -1,4 +1,4 @@
 python_test:
-  alias: Python Script Test
   sequence:
     - service: python_script.test
+        entity_id: group.all_lights
