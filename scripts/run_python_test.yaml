@@ -1,4 +1,4 @@
-python_toggle_power:
-  alias: Toggle Projector
+python_test:
+  alias: Python Script Test
   sequence:
-    - service: python_script.toggle_power
+    - service: python_script.test
