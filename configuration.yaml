@@ -140,4 +140,4 @@ person:
 group: !include_dir_merge_list groups/
 scene: !include_dir_list scenes/
 automation: !include_dir_merge_list automations/
-# script: !include scripts.yaml
+script: !include_dir_list scripts/

@@ -1,0 +1,4 @@
+python_toggle_power:
+  alias: Toggle Projector
+  sequence:
+    - service: python_script.toggle_power
