@@ -1,4 +1,7 @@
 python_test:
   sequence:
     - service: python_script.test
-        entity_id: group.all_lights
+      data_template:
+        entity_ids:
+        - light.kitchen
+        - light.dining_room

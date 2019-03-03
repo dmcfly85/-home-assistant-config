@@ -98,11 +98,11 @@ cloud:
         - light
 
 # Wink
-wink:
-  email: !secret WINK_EMAIL
-  password: !secret WINK_PASSWORD
-  client_id: !secret WINK_CLIENT_ID
-  client_secret: !secret WINK_CLIENT_SECRET
+# wink:
+#   email: !secret WINK_EMAIL
+#   password: !secret WINK_PASSWORD
+#   client_id: !secret WINK_CLIENT_ID
+#   client_secret: !secret WINK_CLIENT_SECRET
 
 ring:
   username: !secret RING_USERNAME

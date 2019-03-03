@@ -1,8 +1,8 @@
-name: Late Evening
+name: Movie
 entities:
   light.brass_lamp:
     state: true
-    brightness: 50
+    brightness: 100
   light.black_lamp:
     state: true
     brightness: 50
