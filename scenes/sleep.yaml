@@ -4,6 +4,7 @@ entities:
   light.brass_lamp:
     state: true
     brightness: 20
+  light.bedroom: false
   light.black_lamp: false
   light.white_lamp: false
   light.kitchen: false
