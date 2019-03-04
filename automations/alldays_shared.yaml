@@ -22,7 +22,7 @@
         transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}"
         kelvin: 2700
     - service: light.turn_on
-        data_template:
+      data_template:
         entity_id: light.light.kitchen
         brightness: 254
         transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}"
