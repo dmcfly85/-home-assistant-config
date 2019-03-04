@@ -3,18 +3,24 @@ entities:
   light.brass_lamp:
     state: true
     brightness: 50
+    transition: 120
   light.black_lamp:
     state: true
     brightness: 50
+    transition: 120
   light.white_lamp:
     state: true
     brightness: 50
+    transition: 120
   light.kitchen:
     state: true
     brightness: 10
+    transition: 120
   light.dining_room:
     state: true
     brightness: 10
+    transition: 120
+  light.bedroom:
   switch.kitchen_cabinet_lights: true
   switch.bathroom_accent: true
-  switch.the_racks: true
+  switch.the_racks: false

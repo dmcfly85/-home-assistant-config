@@ -99,12 +99,28 @@ cloud:
         - switch
         - light
 
+switch:
+  - platform: flux
+    lights:
+      - light.color_lights
+    name: Fluxer Color Lights
+    start_time: '7:00'
+    stop_time: '23:00'
+    start_colortemp: 4000
+    sunset_colortemp: 3000
+    stop_colortemp: 1900
+    brightness: 200
+    disable_brightness_adjust: true
+    mode: xy
+    transition: 30
+    interval: 60
+
 # Wink
-wink:
-  email: !secret WINK_EMAIL
-  password: !secret WINK_PASSWORD
-  client_id: !secret WINK_CLIENT_ID
-  client_secret: !secret WINK_CLIENT_SECRET
+# wink:
+#   email: !secret WINK_EMAIL
+#   password: !secret WINK_PASSWORD
+#   client_id: !secret WINK_CLIENT_ID
+#   client_secret: !secret WINK_CLIENT_SECRET
 
 ring:
   username: !secret RING_USERNAME
