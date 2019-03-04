@@ -97,6 +97,15 @@ cloud:
         - switch
         - light
 
+light:
+  - platform: group
+    name: Color Lights
+    entities:
+      - light.black_lamp_1
+      - light.brass_lamp
+      - light.white_lamp
+      - light.dining_room
+
 # Wink
 # wink:
 #   email: !secret WINK_EMAIL
