@@ -1,5 +1,4 @@
-
-- alias "Fade lights in as sun sets"
+- alias: "Fade lights in as sun sets"
   trigger:
     platform: numeric_state
     entity_id: sun.sun
@@ -10,23 +9,23 @@
     - condition: time
       after: '12:00:00'
   action:
-   - service: light.turn_on
-     data_template:
-       entity_id: light.light.living_room
-       brightness: 254
-       transition: {{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) + 6 * 60) | int }}
-       kelvin: 2700
     - service: light.turn_on
-       data_template:
-       entity_id: light.light.dining_room_light
-       brightness: 254
-       transition: {{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}
-       kelvin: 2700
+      data_template:
+        entity_id: light.light.living_room
+        brightness: 254
+        transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) + 6 * 60) | int }}"
+        kelvin: 2700
     - service: light.turn_on
-       data_template:
-       entity_id: light.light.kitchen
-       brightness: 254
-       transition: {{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}
+      data_template:
+        entity_id: light.light.dining_room_light
+        brightness: 254
+        transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}"
+        kelvin: 2700
+    - service: light.turn_on
+        data_template:
+        entity_id: light.light.kitchen
+        brightness: 254
+        transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}"
 
 
 
