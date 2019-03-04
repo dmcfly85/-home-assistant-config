@@ -20,7 +20,7 @@ entities:
     state: true
     brightness: 10
     transition: 120
-  light.bedroom:
+#  light.bedroom:
   switch.kitchen_cabinet_lights: true
   switch.bathroom_accent: true
   switch.the_racks: false
