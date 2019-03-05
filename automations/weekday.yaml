@@ -46,6 +46,8 @@
     service: scene.turn_on
     entity_id: scene.not_home_day
 
+# All days shared lights faded up against sun.
+
 - alias: "Late Evening"
   trigger:
     - platform: time
@@ -59,5 +61,7 @@
         - wed
         - thu
   action:
-    service: scene.turn_on
-    entity_id: scene.late_evening
+    - service: scene.turn_on
+      entity_id: scene.late_evening
+    - servicce: switch.turn_on
+      entity_id: 

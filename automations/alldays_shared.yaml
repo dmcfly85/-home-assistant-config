@@ -8,6 +8,7 @@
   condition:
     - condition: time
       after: '12:00:00'
+# these transisions won't work
   action:
     - service: light.turn_on
       data_template:
