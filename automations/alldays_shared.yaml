@@ -1,4 +1,4 @@
-- alias: "Fade lights in as sun sets"
+- alias: "Start fading lights as sunsets"
   trigger:
     platform: numeric_state
     entity_id: sun.sun
@@ -8,76 +8,5 @@
   condition:
     - condition: time
       after: '12:00:00'
-# these transisions won't work
   action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.light.living_room
-        brightness: 254
-        transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) + 6 * 60) | int }}"
-        kelvin: 2700
-    - service: light.turn_on
-      data_template:
-        entity_id: light.light.dining_room_light
-        brightness: 254
-        transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}"
-        kelvin: 2700
-    - service: light.turn_on
-      data_template:
-        entity_id: light.light.kitchen
-        brightness: 254
-        transition: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) - as_timestamp(now()) - 6 * 60) | int }}"
-
-
-
-# - alias: "Start color light flux before sunset"
-#   trigger:
-#     platform: numeric_state
-#     entity_id: sun.sun
-#     value_template: "{{ state.attributes.elevation }}"
-#     below: 4.1
-#     above: 3.9
-#   action:
-#     service: switch.turn_on
-#     entity_id: switch.fluxer_color_lights
-
-
-# - alias: "Start fading lights as sunsets"
-#   trigger:
-#     platform: numeric_state
-#     entity_id: sun.sun
-#     value_template: "{{ state.attributes.elevation }}"
-#     below: 4.1
-#     above: 3.9
-#   action:
-#     service: python_script.fade_up_against_sunset
-#     data_template:
-#       entity_id: group.all_lights
-#       ideal_start_angle_of_sun: 4
-#       current_angle_of_sun: "{{ states.sun.sun.attributes.elevation }}"
-#       time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) }}"
-#       end_level_pct: 100
-#       start_level_pct: 0
-#       step_in_level_pct: 2
-#       time_now: "{{ as_timestamp(now()) }}"
-
-
-
-# - alias: "TESTING: Start fading lights as sunsets"
-#   trigger:
-#     platform: numeric_state
-#     entity_id: sun.sun
-#     value_template: "{{ state.attributes.elevation }}"
-#     below: 4.1
-#     above: 3.90
-#   action:
-#     service: python_script.fade_up_against_sunset
-#     data_template:
-#       entity_id: group.all_lights
-#       ideal_start_angle_of_sun: 4
-#       current_angle_of_sun: 4
-#       time_of_sunset: "{{ as_timestamp(now()) + 300 }}"
-#       end_level_pct: 100
-#       start_level_pct: 0
-#       step_in_level_pct: 2
-#       time_now: "{{ as_timestamp(now()) }}"
+    - service: script.sunset

@@ -111,6 +111,11 @@ light:
     entities:
       - light.bedroom_ceiling_1
       - light.bedroom_ceiling_1
+  - platform: group
+    name: The Nook
+    entities:
+      - light.dining_room
+      - light.kitchen
 
 # Wink
 # wink:
@@ -166,8 +171,13 @@ switch:
     mode: xy
     # transition: 30
     # interval: 60
+    
+input_boolean:
+  allow_pre_sunset_script:
+    name: Allow pre sunset loop
+    initial: off
 
 group: !include_dir_merge_list groups/
 scene: !include_dir_list scenes/
 automation: !include_dir_merge_list automations/
-# script: !include_dir_merge_named script
+script: !include_dir_merge_named script

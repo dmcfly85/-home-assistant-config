@@ -1,0 +1,40 @@
+sunset:
+  alias: Sunset
+  sequence:
+    - event: LOGBOOK_ENTRY
+      event_data:
+        name: Sunset Sequence Script
+        message: has started
+        #   entity_id: device_tracker.paulus
+        #   domain: light
+    - alias: Turn lights to lowest brightness and correct color
+      service: light.turn_on
+      data:
+        entity_id: 
+        -  group.living_room
+        -  light.turn_on
+        -  group.living_room
+        brightness: 1
+        kelvin: 2700
+    - alias: Begin fading kitchen and dining room up faster
+      service: python_script.fade_up_against_sunset
+      data_template:
+        entity_id: group.all_lights
+        ideal_start_angle_of_sun: 5
+        current_angle_of_sun: "{{ states.sun.sun.attributes.elevation }}"
+        time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) - 300 }}"
+        end_level_pct: 100
+        start_level_pct: 1
+        step_in_level_pct: 2
+        time_now: "{{ as_timestamp(now()) }}"
+    - alias: Begin fading kitchen and dining room up faster
+      service: python_script.fade_up_against_sunset
+      data_template:
+        entity_id: group.living_room
+        ideal_start_angle_of_sun: 5
+        current_angle_of_sun: "{{ states.sun.sun.attributes.elevation }}"
+        time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) }}"
+        end_level_pct: 100
+        start_level_pct: 1
+        step_in_level_pct: 2
+        time_now: "{{ as_timestamp(now()) }}"     

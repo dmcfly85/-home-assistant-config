@@ -26,6 +26,10 @@ end_level_pct = int(data.get('end_level_pct'))
 step_pct  = int(data.get('step_in_level_pct'))
 start_level_pct = int(data.get('start_level_pct'))
 
+allow_loop_switch = hass.states.get('allow_pre_sunset_script').state
+
+logger.info(switch.state)
+
 logger.info("""Starting fade_up_against_sunset with
 entity_id: %s
 ideal_start_angle_of_sun: %f
@@ -35,7 +39,8 @@ time_now: %f
 end_level_pct: %i
 start_level_pct: %i
 step_pct: %i
-""" % (entity_id, ideal_start_angle_of_sun, current_angle_of_sun, time_of_sunset, time_now, end_level_pct, start_level_pct, step_pct ) )
+allow_loop_switch: %s
+""" % (entity_id, ideal_start_angle_of_sun, current_angle_of_sun, time_of_sunset, time_now, end_level_pct, start_level_pct, step_pct, switch ) )
 
 
 
@@ -69,15 +74,20 @@ sleep_delay: %f
 
 
 new_level = start_level
-while new_level < end_level :
+while new_level < end_level and allow_loop_switch == 'off' :
 	states = hass.states.get(entity_id)
 	current_level = states.attributes.get('brightness') or 0
+	allow_loop_switch = hass.states.get('input_boolean.allow_pre_sunset_script').state
 	if (current_level > new_level) :
 		logger.info('Exiting Fade In')
 		break;
 	else :
-		logger.info('Setting brightness of ' + str(entity_id) + ' from ' + str(current_level) + ' to ' + str(new_level))
+		logger.info('Allow Loop Switch: ' + str(allow_loop_switch) + ' Setting brightness of ' + str(entity_id) + ' from ' + str(current_level) + ' to ' + str(new_level))
 		data = { "entity_id" : entity_id, "brightness" : new_level }
 		hass.services.call('light', 'turn_on', data)
 		new_level = new_level + step
 		time.sleep(sleep_delay)
+		
+logger.info('Script ended')
+		
+		
