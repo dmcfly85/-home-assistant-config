@@ -170,4 +170,4 @@ switch:
 group: !include_dir_merge_list groups/
 scene: !include_dir_list scenes/
 automation: !include_dir_merge_list automations/
-script: !include_dir_merge_named script
+# script: !include_dir_merge_named script
