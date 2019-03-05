@@ -63,5 +63,5 @@
   action:
     - service: scene.turn_on
       entity_id: scene.late_evening
-    - service: switch.turn_on
-      entity_id:
+    # - service: switch.turn_on
+    #   entity_id:
