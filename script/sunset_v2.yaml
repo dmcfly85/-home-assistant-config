@@ -1,0 +1,33 @@
+
+#   action:
+#     service: python_script.fade_up_against_sunset
+#     data_template:
+#       entity_ids: 
+#         - light.kitchen
+#         - light.dining_room
+#       start_angle_of_sun: 4
+#       end_angle_of_sun: -1
+#       start_level_pct: 0
+#       end_level_pct: 100
+#       ignore_start_level_for_lights_already_on: true
+#       trigger_script_when_done:
+#       allow_fade_boolean_name: 
+#       run_script_with_id: 
+
+python_sunset_v2:
+  sequence:
+    - service: python_script.fade_up_against_sunset_v2
+      data_template:
+        entity_ids:
+        - light.kitchen
+        - light.dining_room
+        start_angle_of_sun: 4
+        end_angle_of_sun: -1
+        start_level_pct: 0
+        end_level_pct: 100
+        ignore_start_level_for_lights_already_on: true
+        trigger_script_when_done: python_test
+        allow_fade_boolean_name: input_boolean.sleep_in
+        run_script_with_id: Fade Up Bedroom
+        
+        

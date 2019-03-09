@@ -11,15 +11,13 @@ sunset:
       service: light.turn_on
       data:
         entity_id: 
-        -  group.living_room
-        -  light.turn_on
-        -  group.living_room
+        - light.color_lights
         brightness: 1
         kelvin: 2700
     - alias: Begin fading kitchen and dining room up faster
       service: python_script.fade_up_against_sunset
       data_template:
-        entity_id: group.all_lights
+        entity_id: light.the_nook
         ideal_start_angle_of_sun: 5
         current_angle_of_sun: "{{ states.sun.sun.attributes.elevation }}"
         time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) - 300 }}"
@@ -30,7 +28,7 @@ sunset:
     - alias: Begin fading kitchen and dining room up faster
       service: python_script.fade_up_against_sunset
       data_template:
-        entity_id: group.living_room
+        entity_id: light.living_room
         ideal_start_angle_of_sun: 5
         current_angle_of_sun: "{{ states.sun.sun.attributes.elevation }}"
         time_of_sunset: "{{ as_timestamp(states.sun.sun.attributes.next_setting) }}"

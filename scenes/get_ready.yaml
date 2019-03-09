@@ -1,0 +1,37 @@
+name: Get Ready
+entities:
+  light.brass_lamp:
+    state: true
+    brightness: 255
+    transition: 10
+  light.black_lamp:
+    state: true
+    brightness: 255
+    transition: 10
+  light.white_lamp:
+    state: true
+    brightness: 255
+    transition: 10
+  light.kitchen:
+    state: true
+    brightness: 255
+    transition: 10
+  light.dining_room:
+    state: true
+    brightness: 255
+    transition: 10
+  light.bedroom:
+    state: true
+    brightness: 255
+    transition: 10
+  light.hall:
+    state: true
+    brightness: 255
+    transition: 10
+  light.bathroom:
+    brightness: 255
+    transition: 10 
+  switch.late_evening_to_candle_light: off
+  switch.kitchen_cabinet_lights: true
+  switch.bathroom_accent: true
+  switch.the_racks: false

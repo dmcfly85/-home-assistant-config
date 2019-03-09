@@ -1,4 +1,3 @@
 name: Wake
 entities:
   switch.bedroom_fans: false
-  switch.the_racks: true

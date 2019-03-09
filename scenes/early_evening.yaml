@@ -15,6 +15,10 @@ entities:
   light.kitchen:
     state: true
     brightness: 255
+  light.hall:
+    state: true
+    brightness: 255
+  light.bedroom_ceiling: false
   switch.kitchen_cabinet_lights: true
   switch.bathroom_accent: true
   switch.the_racks: true

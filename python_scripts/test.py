@@ -16,3 +16,8 @@ a = 1
 
 if switch == 'on' and a == 1:
   logger.info('in if')
+  
+  
+for entity in entity_ids:
+   e = hass.states.get(entity).attributes.get("brightness")
+   logger.info(e)

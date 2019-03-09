@@ -1,0 +1,33 @@
+name: Bed Time
+entities:
+  light.brass_lamp:
+    state: true
+    brightness: 150
+    transition: 10
+  light.black_lamp:
+    state: true
+    brightness: 150
+    transition: 10
+  light.white_lamp:
+    state: true
+    brightness: 150
+    transition: 10
+  light.kitchen:
+    state: true
+    brightness: 150
+  light.dining_room:
+    state: true
+    brightness: 150
+    transition: 10
+  light.bedroom:
+    state: true
+    brightness: 150
+    transition: 10
+  light.hall_light:
+    state: true
+    brightness: 150
+  light.bathroom:
+    brightness: 100
+  switch.kitchen_cabinet_lights: true
+  switch.bathroom_accent: true
+  switch.the_racks: false

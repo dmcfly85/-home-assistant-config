@@ -2,19 +2,36 @@ name: Morning
 entities:
   light.dining_room:
     state: true
-    brightness: 255
+    brightness: 100
+    transition: 300
+    kelvin: 3000
   light.brass_lamp:
     state: true
-    brightness: 255
+    brightness: 100
+    transition: 300
+    kelvin: 3000
   light.black_lamp:
     state: true
-    brightness: 255
+    brightness: 100
+    transition: 300
+    kelvin: 3000
   light.white_lamp:
     state: true
-    brightness: 255
+    brightness: 100
+    transition: 300
+    kelvin: 3000
   light.kitchen:
     state: true
     brightness: 255
+    transition: 300
+  light.hall:
+    state: true
+    brightness: 10
+    transition: 300
+  light.bathroom:
+    state: true
+    brightness: 50
+    transition: 300
   switch.kitchen_cabinet_lights: true
   switch.bathroom_accent: true
   switch.the_racks: true

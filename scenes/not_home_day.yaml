@@ -6,8 +6,13 @@ entities:
     brightness: 10
   light.black_lamp: false
   light.white_lamp: false
+  lgiht.bedroom: false
+  light.bathroom: false
   light.kitchen: false
-  switch.kitchen_cabinet_lights: true
-  switch.bathroom_accent: true
+  light.hall: 
+    state: true
+    brightness: 50
+  switch.kitchen_cabinet_lights: false
+  switch.bathroom_accent: false
   switch.the_racks: true
 

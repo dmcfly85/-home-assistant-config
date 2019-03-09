@@ -1,13 +1,22 @@
 name: Night
 entities:
-  light.dining_room: false
   light.brass_lamp:
     state: true
     brightness: 20
-  light.black_lamp: false
-  light.white_lamp: false
-  light.kitchen: false
+    transition: 10
+    kelvin: 2000
+  light.black_lamp: off
+  light.white_lamp: off
+  light.kitchen: off
+  light.dining_room_light: off
+  light.bedroom: off
+  light.hall: off
+  light.bathroom:     
+    state: true
+    brightness: 1
+    transition: 10
+  switch.late_evening_to_candle_light: off
   switch.kitchen_cabinet_lights: true
   switch.bathroom_accent: true
-  switch.the_racks: true
+  switch.the_racks: false
 

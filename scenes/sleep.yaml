@@ -4,12 +4,21 @@ entities:
   light.brass_lamp:
     state: true
     brightness: 20
+    kelvin: 1000
+  light.hall_light: false
   light.bedroom: false
   light.black_lamp: false
   light.white_lamp: false
   light.kitchen: false
   switch.kitchen_cabinet_lights: true
-  switch.bathroom_accent: true
+  switch.bathroom_accent: false
+  light.bathroom_fixture_1: off
+  light.bathroom_fixture_3: off
+  light.bathroom_fixture_2:
+    state: true
+    brightness: 10
+    transition: 10
+  switch.late_evening_to_candle_light: off
   switch.the_racks: false
   switch.bedroom_fans: true
 

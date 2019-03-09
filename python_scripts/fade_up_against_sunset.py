@@ -26,9 +26,9 @@ end_level_pct = int(data.get('end_level_pct'))
 step_pct  = int(data.get('step_in_level_pct'))
 start_level_pct = int(data.get('start_level_pct'))
 
-allow_loop_switch = hass.states.get('allow_pre_sunset_script').state
+allow_loop_switch = hass.states.get('input_boolean.allow_pre_sunset_script').state
 
-logger.info(switch.state)
+logger.info(allow_loop_switch)
 
 logger.info("""Starting fade_up_against_sunset with
 entity_id: %s
@@ -40,7 +40,7 @@ end_level_pct: %i
 start_level_pct: %i
 step_pct: %i
 allow_loop_switch: %s
-""" % (entity_id, ideal_start_angle_of_sun, current_angle_of_sun, time_of_sunset, time_now, end_level_pct, start_level_pct, step_pct, switch ) )
+""" % (entity_id, ideal_start_angle_of_sun, current_angle_of_sun, time_of_sunset, time_now, end_level_pct, start_level_pct, step_pct, allow_loop_switch ) )
 
 
 
@@ -74,7 +74,7 @@ sleep_delay: %f
 
 
 new_level = start_level
-while new_level < end_level and allow_loop_switch == 'off' :
+while new_level < end_level and allow_loop_switch == 'on' :
 	states = hass.states.get(entity_id)
 	current_level = states.attributes.get('brightness') or 0
 	allow_loop_switch = hass.states.get('input_boolean.allow_pre_sunset_script').state

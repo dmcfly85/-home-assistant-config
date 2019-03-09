@@ -35,6 +35,11 @@ logger:
 # http:
 #   base_url: example.duckdns.org:8123
 
+http:
+  base_url: https://frank100.duckdns.org:8123
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
@@ -76,6 +81,16 @@ sensor:
         friendly_name: "Sun angle"
         unit_of_measurement: 'degrees'
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+  - platform: darksky
+    api_key: !secret DARK_SKY_API_KEY
+    forecast:
+      - 0
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+      - precip_intensity
+      - cloud_cover
 
 # Text to speech
 tts:
@@ -116,6 +131,11 @@ light:
     entities:
       - light.dining_room
       - light.kitchen
+  - platform: group
+    name: Black Lamp
+    entities:
+      - light.black_lamp_1
+
 
 # Wink
 # wink:
@@ -130,22 +150,13 @@ ring:
 
 # media_player:
 #   - platform: samsungtv
-#     host: 10.0.1.43
+#     host: 10.0.0.147
 #     mac: 00:cC:F4:2E:77:80
 #     port: 8001
 
 python_script:
 
 device_tracker:
-  - platform: nmap_tracker
-    hosts: 10.0.0.1/24
-    scan_options: " --privileged -sP "
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
-
-# emulated_hue:
-#   listen_port: 80
 
 person:
   - name: Dustin
@@ -161,21 +172,25 @@ switch:
     platform: flux
     lights:
       - light.color_lights
-    name: Fluxer Color Lights
+    name: Late Evening To Candle Light
     stop_time: '23:30'
-    start_colortemp: 2600
-    sunset_colortemp: 2600
-    stop_colortemp: 2200
+    start_colortemp: 2700
+    sunset_colortemp: 2700
+    stop_colortemp: 2570
     # brightness: 200
     disable_brightness_adjust: true
-    mode: xy
+    mode: mired
     # transition: 30
     # interval: 60
     
 input_boolean:
   allow_pre_sunset_script:
     name: Allow pre sunset loop
+    initial: on
+  sleep_in:
+    name: Override morning routines
     initial: off
+  
 
 group: !include_dir_merge_list groups/
 scene: !include_dir_list scenes/

@@ -1,7 +1,7 @@
 - alias: "Wake Up"
   trigger:
     - platform: time
-      at: '07:00:00'
+      at: '07:15:00'
   condition:
     - condition: time
       weekday:
@@ -13,7 +13,7 @@
   action:
     service: scene.turn_on
     entity_id: scene.wake
-
+    
 - alias: "Morning"
   trigger:
     - platform: time
@@ -29,7 +29,24 @@
   action:
     service: scene.turn_on
     entity_id: scene.morning
-
+    
+- alias: "Get Ready"
+  trigger:
+    - platform: time
+      at: '08:15:00'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    service: scene.turn_on
+    entity_id: scene.get_ready
+    
+    
 - alias: "Off to Work"
   trigger:
     - platform: time
@@ -62,6 +79,7 @@
         - thu
   action:
     - service: scene.turn_on
-      entity_id: scene.late_evening
-    # - service: switch.turn_on
-    #   entity_id:
+      entity_id: scene.late_evening_fade
+      
+
+

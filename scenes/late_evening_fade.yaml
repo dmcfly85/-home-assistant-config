@@ -1,33 +1,45 @@
-name: Late Evening
+name: Late Evening Fade
 entities:
   light.brass_lamp:
     state: true
     brightness: 170
+    transition: 400
   light.black_lamp:
     state: true
     brightness: 170
+    transition: 400
   light.white_lamp:
     state: true
     brightness: 170
+    transition: 400
   light.kitchen:
     state: true
     brightness: 5
+    transition: 400
   light.dining_room:
     state: true
     brightness: 130
+    transition: 400
   light.bedroom:
     state: true
     brightness: 50
+    transition: 400
   light.bathroom:
     state: true
     brightness: 1
+    transition: 400
   light.bedroom_ceiling:
     state: true
     brightness: 20
+    transition: 400
   light.hall_light:
     state: true
     brightness: 1
+    transition: 400
   switch.kitchen_cabinet_lights: true
   switch.bathroom_accent: true
   switch.the_racks: false
   switch.late_evening_to_candle_light: true
+    
+    
+    
